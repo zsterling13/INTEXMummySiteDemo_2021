@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - TestAppAuthAndAuthorize</title>
+    <title>@ViewData["Title"] - INTEX2Mock</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -22,9 +22,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Create">Role</a>
-                        </li>
+                        @if (User.IsInRole("Admin"))
+                        { 
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Create">Role</a>
+                            </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ViewMummyRecords">View Records</a>
                         </li>
@@ -44,7 +47,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            © 2020 - TestAppAuthAndAuthorize - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            © 2021 - INTEX2Mock - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
