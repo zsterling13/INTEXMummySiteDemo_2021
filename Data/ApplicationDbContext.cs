@@ -11,6 +11,8 @@ namespace INTEX2Mock.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+
         }
+
     }
 }

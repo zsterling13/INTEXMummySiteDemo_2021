@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using INTEX2Mock.Data;
 
 namespace INTEX2Mock.Controllers
 {
@@ -17,6 +18,8 @@ namespace INTEX2Mock.Controllers
         private readonly ILogger<HomeController> _logger;
 
         private readonly RoleManager<IdentityRole> _roleManager;
+
+        private MummyDbContext _mummyContext { get; set; }
 
         public HomeController(ILogger<HomeController> logger, RoleManager<IdentityRole> roleManager)
         {
