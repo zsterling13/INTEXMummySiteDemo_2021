@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Mummy;
+
+<div>
+    <h1>Add a Movie</h1>
+    <br />
+    <p>Enter in the information you would like to add for a new mummy record below.</p>
+    <br />
+
+    <!--Form where the user will enter in information to be run through the Add_Movie Action in the Home Controller-->
+    <form asp-action="EditMummyRecord" method="post">
+        <div>
+            <label asp-for="Name">Name</label>
+            <input asp-for="Name" value="@Model.Name"/>
+        </div>
+        <div>
+            <label asp-for="Age">Age</label>
+            <input asp-for="Age" value="@Model.Age"/>
+        </div>
+        <input type="hidden" asp-for="MummyID" value="@Model.MummyID" />
+
+        <button type="submit">Add Mummy Record</button>
+    </form>
+
+    <!--Show any errors here-->
+    <div asp-validation-summary="All"></div>
+</div>

@@ -8,7 +8,7 @@ namespace INTEX2Mock.Models
 {
     public class Mummy
     {
-        [Key]
+        [Key, Required]
         public int MummyID { get; set; }
 
         public string Name { get; set; }

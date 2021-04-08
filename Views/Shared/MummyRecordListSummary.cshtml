@@ -9,4 +9,32 @@
     <td>@Model.MummyID</td>
     <td>@Model.Name</td>
     <td>@Model.Age</td>
+    <td>
+        @if (User.IsInRole("Admin"))
+        {
+            <form method="post">
+                <input type="hidden" asp-for="MummyID" value="@Model.MummyID" />
+                <input type="hidden" asp-for="Name" value="@Model.Name" />
+                <input type="hidden" asp-for="Age" value="@Model.Age" />
+                <button type="submit" class="btn btn-success" style="margin-bottom:3%">Edit</button>
+            </form>
+
+            <!--Button that allows the user to remove the movie record that has been requested-->
+            <form method="post" asp-action="RemoveRecord">
+                <input type="hidden" asp-for="MummyID" value="@Model.MummyID" />
+                <input type="hidden" asp-for="Name" value="@Model.Name" />
+                <button type="submit" class="btn btn-danger">Remove</button>
+            </form>
+        }
+        else if (User.IsInRole("Manager"))
+        {
+            <form method="post">
+                <input type="hidden" asp-for="MummyID" value="@Model.MummyID" />
+                <input type="hidden" asp-for="Name" value="@Model.Name" />
+                <input type="hidden" asp-for="Age" value="@Model.Age" />
+                <button type="submit" class="btn btn-success" style="margin-bottom:3%">Edit</button>
+            </form>
+        }
+
+    </td>
 </tr>
