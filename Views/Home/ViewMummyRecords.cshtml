@@ -2,4 +2,31 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    ViewData["Title"] = "Mummy Record List";
 }
+
+@model IEnumerable<Mummy>
+
+<div class="text-center col-12">
+    <div class="text-center">
+        <!--Table that displays time slots and tells whether slot is available or unavailable-->
+        <table class="center table table-striped table-bordered table-hover table-info">
+            <thead>
+                <tr>
+                    <th>MummyID</th>
+                    <th>MummyName</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!--Loops through all of the possible time slots to print them out here.-->
+                <!--Information to loop through is located in a seperate .cshtml file called TimeSlotSummary.cshtml, which is imported into here-->
+                @foreach (var x in Model)
+                {
+                    <partial name="MummyRecordListSummary" model="x" />
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
