@@ -75,6 +75,12 @@ namespace INTEX2Mock
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    "pagenum",
+                    "ViewMummyRecords/{pagenum}",
+                    new { Controller = "Home", action = "ViewMummyRecords" }
+                    );
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();

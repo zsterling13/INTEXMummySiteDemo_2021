@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Claims;
 using INTEX2Mock.Data;
+using INTEX2Mock.Models.ViewModels;
 
 namespace INTEX2Mock.Controllers
 {
@@ -20,6 +21,8 @@ namespace INTEX2Mock.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
 
         private MummyDbContext _mummyContext { get; set; }
+
+        private int pageSize = 5;
 
         public HomeController(ILogger<HomeController> logger, RoleManager<IdentityRole> roleManager, MummyDbContext mummyContext)
         {
@@ -32,7 +35,7 @@ namespace INTEX2Mock.Controllers
         public IActionResult Index()
         {
             var roles = _roleManager.Roles.ToList();
-            
+
             return View(roles);
         }
 
@@ -49,10 +52,27 @@ namespace INTEX2Mock.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult ViewMummyRecords()
+        public IActionResult ViewMummyRecords(int pageNum = 1)
         {
-            IQueryable<Mummy> mummy_DB = _mummyContext.Mummies;
-            return View(mummy_DB);
+            return View(new SeeMummiesViewModel
+            { 
+                Mummies = (_mummyContext.Mummies
+                .OrderBy(x => x.MummyID)
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize)
+                .ToList()),
+
+                PageNumberingInfo = new PageNumberingInfo
+                {
+                    NumItemsPerPage = pageSize,
+                    CurrentPage = pageNum,
+                    TotalNumItems = (_mummyContext.Mummies.Count())
+                }
+
+            });
+
+        // IQueryable<Mummy> mummy_DB = _mummyContext.Mummies;
+        // return View(mummy_DB);
         }
 
         [HttpPost]
