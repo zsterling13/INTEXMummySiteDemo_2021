@@ -6,7 +6,7 @@
     var roles = (List<IdentityRole>)ViewData["roles"];
 }
 
-<h1 class="topmarg">@ViewData["Title"]</h1>
+<h1>@ViewData["Title"]</h1>
 
 <div class="row">
     <div class="col-md-4">
@@ -33,7 +33,6 @@
                 <select asp-for="Input.Name" class="form-control">
                     <option value="89497540-af40-45d0-a157-668900a03554">Unassigned</option>
                 </select>
-                <span asp-validation-for="Input.Name" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
@@ -61,7 +60,6 @@
                                 {
                                     <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
                                 }
-                           
                             </p>
                         </div>
                     </form>
