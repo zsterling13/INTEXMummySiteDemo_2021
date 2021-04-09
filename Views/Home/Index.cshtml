@@ -3,3 +3,58 @@
 *@
 @{
 }
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container">
+        <div class="masthead-subheading">BYU Research of Ancient History</div>
+        <div class="masthead-heading text-uppercase">Fag el Gamous</div>
+        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" asp-controller="Home" asp-action="ViewMummyRecords">Go to Burial Summary</a>
+    </div>
+</header>
+<!-- About-->
+<section class="page-section" id="sand">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="about section-heading text-uppercase">About</h2>
+            <p class="about section-subheading">
+                Fag el-Gamous (which means Way of the Water Buffalo) is a large and important cemetery in Egypt that has been under archeological investigation (primarily by BYU researchers) for over 25 years. The excavation has garnered international attention because of the interesting insights gained by studying the Fag el-Gamous mummies. Detailed background information on this site can be found in the academic article “Rethinking burial dates at a Graeco-Roman Cemetery: Fag el-Gamous, Fayoum, Egypt.”
+
+                During multiple years of study, researchers have excavated more than 1,000 mummies and collected data in field notes, spreadsheets, and simple databases about each mummy’s location, physical orientation in the ground, burial depth, hair color, wrapping (including information about the textiles used), gender, age, bone (including skull and teeth) dimensions, items accompanying the mummy, and more. And, of course, there are many, many photographs. Offsite, researchers have performed a variety of analyses on the items excavated including carbon dating, DNA sequencing, and others.
+            </p>
+        </div>
+
+    </div>
+</section>
+<!-- Services-->
+<section class="page-section" id="yellow">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <img src="~/assets/img/document.png" alt="..." width="100" height="100">
+                <br />
+                <h4 class="my-3 yo">Burial Summary List</h4>
+                <p class="yo">We have aggregated a list of all mummies buried in Fog el Damous. You can filter by location, date found, hair color, and many other cool metrics.</p>
+                <a asp-controller="Home" asp-action="ViewMummyRecords" class="btn btn-primary">View More</a>
+            </div>
+            <div class="col-md-4">
+                <img src="~/assets/img/security.png" alt="..." width="100" height="100">
+                <br />
+                <h4 class="my-3 yo">Register</h4>
+                <p class="yo">If you are a BYU researching professor or student, continue to create an accout so you can add new information or edit current findings.</p>
+                <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary">Continue</a>
+            </div>
+            <div class="col-md-4">
+                <img src="~/assets/img/password.png" alt="..." width="100" height="100">
+                <br />
+                <h4 class="my-3 yo">Login</h4>
+                <p class="yo">Enter your login credentials in order to access additional features built into this website. After logging in, you are able to create, read, update, and delete information about our mummies. </p>
+                <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+    </div>
+</section>
