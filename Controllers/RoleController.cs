@@ -94,13 +94,13 @@ namespace INTEX2Mock.Controllers
             this.roleManager = roleManager;
             this.userManager = userManager;
         }
-        [Authorize(Policy = "readpolicy")]
+        //[Authorize(Policy = "readpolicy")]
         public IActionResult Index()
         {
             var roles = roleManager.Roles.ToList();
             return View(roles);
         }
-        [Authorize(Policy = "writepolicy")]
+        //[Authorize(Policy = "writepolicy")]
         public IActionResult CreateRole()
         {
             return View(new IdentityRole());
@@ -109,7 +109,7 @@ namespace INTEX2Mock.Controllers
         public async Task<IActionResult> UserRoles()
         {
             ViewBag.Admin = userManager.GetUsersInRoleAsync("Admin").Result;
-            ViewBag.User = userManager.GetUsersInRoleAsync("User").Result;
+            ViewBag.Researcher = userManager.GetUsersInRoleAsync("Researcher").Result;
             ViewBag.Unassigned = userManager.GetUsersInRoleAsync("Unassigned").Result;
 
             return View();
@@ -135,7 +135,7 @@ namespace INTEX2Mock.Controllers
             await userManager.RemoveFromRoleAsync(selectedUser, Role);
             await userManager.AddToRoleAsync(selectedUser, selectedRole.Name);
 
-            ViewBag.User = userManager.GetUsersInRoleAsync("User").Result;
+            ViewBag.Researcher = userManager.GetUsersInRoleAsync("Researcher").Result;
             ViewBag.Admin = userManager.GetUsersInRoleAsync("Admin").Result;
             ViewBag.Unassigned = userManager.GetUsersInRoleAsync("Unassigned").Result;
 
@@ -150,7 +150,7 @@ namespace INTEX2Mock.Controllers
             return RedirectToAction("Index");
         }
 
-        [Authorize(Policy = "writepolicy")]
+        //[Authorize(Policy = "writepolicy")]
         public IActionResult Create()
         {
             return View(new IdentityRole());
