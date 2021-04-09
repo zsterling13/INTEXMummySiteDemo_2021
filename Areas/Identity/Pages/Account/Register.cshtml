@@ -29,11 +29,10 @@
                 <input asp-for="Input.ConfirmPassword" class="form-control" />
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Input.Name"></label>
-                <select asp-for="Input.Name" class="form-control" asp-items='new SelectList(roles,"Id","Name")'>
+            <div class="form-group" hidden>
+                <select asp-for="Input.Name" class="form-control">
+                    <option value="394c38c4-70e4-46d1-97d5-244122a1affa">User</option>
                 </select>
-                <span asp-validation-for="Input.Name" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
         </form>

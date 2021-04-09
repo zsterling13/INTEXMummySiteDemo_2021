@@ -53,7 +53,7 @@ namespace INTEX2Mock.Infrastructure
                 TagBuilder individualTag = new TagBuilder("a");
 
                 KeyValuePairs["pageNum"] = i;
-                individualTag.Attributes["href"] = UrlHelp.Action("Index", KeyValuePairs);
+                individualTag.Attributes["href"] = UrlHelp.Action("ViewMummyRecords", KeyValuePairs);
                 individualTag.Attributes["style"] = "margin:3%";
                 individualTag.InnerHtml.Append(i.ToString());
 

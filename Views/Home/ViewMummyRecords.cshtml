@@ -5,7 +5,7 @@
     ViewData["Title"] = "Mummy Record List";
 }
 
-@model IEnumerable<Mummy>
+@model INTEX2Mock.Models.ViewModels.SeeMummiesViewModel
 
 <div class="text-center col-12">
     <div class="text-center">
@@ -22,11 +22,15 @@
             <tbody>
                 <!--Loops through all of the possible time slots to print them out here.-->
                 <!--Information to loop through is located in a seperate .cshtml file called TimeSlotSummary.cshtml, which is imported into here-->
-                @foreach (var x in Model)
+                @foreach (var x in Model.Mummies)
                 {
                     <partial name="MummyRecordListSummary" model="x" />
                 }
             </tbody>
         </table>
+    </div>
+
+    <div page-info="@Model.PageNumberingInfo">
+
     </div>
 </div>
