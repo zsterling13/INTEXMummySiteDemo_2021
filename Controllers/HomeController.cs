@@ -29,14 +29,19 @@ namespace INTEX2Mock.Controllers
         }
 
         //[Authorize(Policy = "readpolicy")]
-        public IActionResult Index()
+        public IActionResult RoleList()
         {
             var roles = _roleManager.Roles.ToList();
             
             return View(roles);
         }
 
-        [Authorize(Policy = "writepolicy")]
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        //[Authorize(Policy = "writepolicy")]
         public IActionResult Create()
         {
             return View(new IdentityRole());
@@ -123,7 +128,7 @@ namespace INTEX2Mock.Controllers
 
             _mummyContext.SaveChanges();
 
-            return View("Confirmation", passedMummy);
+            return View("ViewMummyRecords", passedMummy);
         }
 
         public IActionResult Privacy()

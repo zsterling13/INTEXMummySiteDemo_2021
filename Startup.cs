@@ -28,10 +28,10 @@ namespace INTEX2Mock
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
+                options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<MummyDbContext>(options =>
-            options.UseSqlServer(
+            options.UseSqlite(
                     Configuration.GetConnectionString("MummyConnection")));
             services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                  .AddDefaultUI()
