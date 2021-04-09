@@ -30,6 +30,17 @@ namespace INTEX2Mock.Infrastructure
         //PagenumberingInfo object for info in regards to the page info that Pagination needs to know
         public PageNumberingInfo PageInfo { get; set; }
 
+        //Boolean value to ensure that div tags can use classes with the PageLinkTagHelper model. Default is false.
+        public bool PageClassesEnabled { get; set; } = false;
+
+        public string PageClass { get; set; }
+
+        public string PageClassNormal { get; set; }
+
+        public string PageClassSelected { get; set; }
+
+        public string PageAction { get; set; }
+
         //Own dictionary that has key value pairs that we are creating
         [HtmlAttributeName(DictionaryAttributePrefix = "page-url-")]
         public Dictionary<string, object> KeyValuePairs { get; set; } = new Dictionary<string, object>();
@@ -56,6 +67,12 @@ namespace INTEX2Mock.Infrastructure
                 individualTag.Attributes["href"] = UrlHelp.Action("ViewMummyRecords", KeyValuePairs);
                 individualTag.Attributes["style"] = "margin:3%";
                 individualTag.InnerHtml.Append(i.ToString());
+
+                if (PageClassesEnabled)
+                {
+                    individualTag.AddCssClass(PageClass);
+                    individualTag.AddCssClass(i == PageInfo.CurrentPage ? PageClassSelected : PageClassNormal);
+                }
 
                 finishedTag.InnerHtml.AppendHtml(individualTag);
             }
