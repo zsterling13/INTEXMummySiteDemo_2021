@@ -44,9 +44,9 @@ namespace INTEX2Mock
 
             services.AddAuthorization(options => {
                 options.AddPolicy("readpolicy",
-                    builder => builder.RequireRole("Admin", "Manager", "User"));
+                    builder => builder.RequireRole("Admin", "Researcher", "Unassigned"));
                 options.AddPolicy("writepolicy",
-                    builder => builder.RequireRole("Admin", "Manager"));
+                    builder => builder.RequireRole("Admin", "Researcher"));
             });
         }
 
