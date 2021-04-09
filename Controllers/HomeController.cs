@@ -18,11 +18,11 @@ namespace INTEX2Mock.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private readonly RoleManager<IdentityRole> _roleManager;
+        RoleManager<IdentityRole> _roleManager;
 
         private MummyDbContext _mummyContext { get; set; }
 
-        private int pageSize = 5;
+        private int pageSize = 3;
 
         public HomeController(ILogger<HomeController> logger, RoleManager<IdentityRole> roleManager, MummyDbContext mummyContext)
         {
@@ -34,23 +34,11 @@ namespace INTEX2Mock.Controllers
         //[Authorize(Policy = "readpolicy")]
         public IActionResult Index()
         {
-            var roles = _roleManager.Roles.ToList();
 
-            return View(roles);
+            return View();
         }
 
-        [Authorize(Policy = "writepolicy")]
-        public IActionResult Create()
-        {
-            return View(new IdentityRole());
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Create(IdentityRole role)
-        {
-            await _roleManager.CreateAsync(role);
-            return RedirectToAction("Index");
-        }
+        
 
         public IActionResult ViewMummyRecords(int pageNum = 1)
         {
@@ -145,6 +133,8 @@ namespace INTEX2Mock.Controllers
 
             return View("Confirmation", passedMummy);
         }
+
+        
 
         public IActionResult Privacy()
         {
