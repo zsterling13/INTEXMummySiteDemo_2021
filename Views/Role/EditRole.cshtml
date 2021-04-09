@@ -4,41 +4,44 @@
 
 
 
-<h1>Edit Profile</h1>
+    <h1>Edit Profile</h1>
 
 
 
 
 
-<form asp-action="SubmitEdits" method="post">
-    <label>Email:</label>
-    <input class="form-control" value="@Model.Id" type="hidden" name="UserId" />
-    <input class="form-control" value="@Model.Email" name="newEmail" />
+    <form asp-action="SubmitEdits" method="post">
+        <div style="max-width:20rem;">
+            <label>Email:</label>
+            <input class="form-control" value="@Model.Id" type="hidden" name="UserId" />
+            <input class="form-control" value="@Model.Email" name="newEmail" />
+        </div>
+
+
+
+        <div style="max-width:15rem;">
+            <label>Role:</label>
+            <input class="form-control" value="@ViewBag.Role" type="hidden" name="Role" />
+            <select class="form-control" name="newRole">
+
+                <option value="Admin">Admin</option>
+                <option value="Researcher">Researcher</option>
+                <option value="Unassigned">Unassigned</option>
 
 
 
 
 
-    <label>Role:</label>
-    <input class="form-control" value="@ViewBag.Role" type="hidden" name="Role" />
-    <select class="form-control" name="newRole">
 
-        <option value="Admin">Admin</option>
-        <option value="Researcher">Researcher</option>
-        <option value="Unassigned">Unassigned</option>
+
+            </select>
+        </div>
 
 
 
 
-
-
-
-    </select>
-
-
-
-
-
-    <br />
-    <button type="submit" class="form-control">Submit Edits</button>
-</form>
+        <br />
+        <div style="max-width:7.5rem;">
+            <button type="submit" class="form-control btn btn-primary">Submit Edits</button>
+        </div>
+    </form>

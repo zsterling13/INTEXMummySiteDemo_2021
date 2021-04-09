@@ -65,7 +65,7 @@ namespace INTEX2Mock.Infrastructure
 
                 KeyValuePairs["pageNum"] = i;
                 individualTag.Attributes["href"] = UrlHelp.Action("ViewMummyRecords", KeyValuePairs);
-                individualTag.Attributes["style"] = "margin:3%";
+                individualTag.Attributes["style"] = "margin:0.5rem";
                 individualTag.InnerHtml.Append(i.ToString());
 
                 if (PageClassesEnabled)

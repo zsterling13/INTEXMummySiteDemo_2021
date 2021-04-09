@@ -6,7 +6,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>@ViewData["Title"]</title>
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="~/assets/img/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -23,7 +23,7 @@
 <body id="page-top">
     <!-- Navigation-->
     <header>
-        <nav class="navbar navbar-light navbar-expand-lg  fixed-top" id="mainNav">
+        <nav class="navbar navbar-light navbar-expand-lg" id="mainNav">
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger" asp-area="" asp-controller="Home" asp-action="Index">Fag el Gamous</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -36,13 +36,13 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         @if (User.IsInRole("Admin"))
                         {
-                            <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" asp-area="" asp-controller="Role" asp-action="Create">Role</a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" asp-area="" asp-controller="Role" asp-action="Create">Role</a>
+                        </li>
                         }
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" asp-area="" asp-controller="Home" asp-action="ViewMummyRecords">View Records</a>
@@ -52,40 +52,40 @@
                         </li>
                         @if (User.IsInRole("Admin"))
                         {
-                            <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" asp-area="" asp-controller="Role" asp-action="UserRoles">See Roles</a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" asp-area="" asp-controller="Role" asp-action="UserRoles">See Roles</a>
+                        </li>
                         }
                     </ul>
-                </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <!--<div class="container">
+                <main role="main" class="pb-3">-->
+            <div style="margin-top:40px; margin-bottom:3rem;">
+                @RenderBody()
             </div>
-        </nav>
-    </header>
-    <!--<div class="container">
-        <main role="main" class="pb-3">-->
-    <div style="margin-top:80px">
-        @RenderBody()
-    </div>
-    <!--</main>
-    </div>-->
+            <!--</main>
+            </div>-->
 
-    <footer class="bg-light text-center text-lg-start">
-        <div class="text-center p-3" style=" background-color: #0f1675; color:white;">
-            © 2020 Copyright: BYU Information Systems
-        </div>
-    </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Third party plugin JS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <!-- Contact form JS-->
-    <script src="assets/mail/jqBootstrapValidation.js"></script>
-    <script src="assets/mail/contact_me.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
-</body>
-</html>  
+            <footer class="bg-light text-center text-lg-start">
+                <div class="text-center p-3" style=" background-color: #0f1675; color:white;">
+                    © 2020 Copyright: BYU Information Systems
+                </div>
+            </footer>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+            <!-- Third party plugin JS-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+            <!-- Contact form JS-->
+            <script src="assets/mail/jqBootstrapValidation.js"></script>
+            <script src="assets/mail/contact_me.js"></script>
+            <!-- Core theme JS-->
+            <script src="js/scripts.js"></script>
+            <script src="~/lib/jquery/dist/jquery.min.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+            @RenderSection("Scripts", required: false)
+        </body>
+        </html>

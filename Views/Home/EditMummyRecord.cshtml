@@ -10,10 +10,10 @@
 @{
 }
 
-@model Mummy;
+@model Mummy
 
 <div>
-    <h1>Add a Movie</h1>
+    <h1>Edit a Mummy Record</h1>
     <br />
     <p>Enter in the information you would like to add for a new mummy record below.</p>
     <br />
@@ -30,7 +30,7 @@
         </div>
         <input type="hidden" asp-for="MummyID" value="@Model.MummyID" />
 
-        <button type="submit">Add Mummy Record</button>
+        <button class="btn btn-primary" type="submit">Edit Mummy Record</button>
     </form>
 
     <!--Show any errors here-->
