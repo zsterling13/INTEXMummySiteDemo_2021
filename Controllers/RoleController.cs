@@ -95,7 +95,7 @@ namespace INTEX2Mock.Controllers
             this.userManager = userManager;
         }
         //[Authorize(Policy = "readpolicy")]
-        public IActionResult Index()
+        public IActionResult RoleList()
         {
             var roles = roleManager.Roles.ToList();
             return View(roles);
