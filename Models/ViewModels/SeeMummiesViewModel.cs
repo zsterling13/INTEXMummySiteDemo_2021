@@ -14,8 +14,6 @@ namespace INTEX2Mock.Models.ViewModels
 
         public MummySearchModel mummySearchModel { get; set; }
 
-        public bool pageNumberBtn { get; set; }
-
         public string UrlInfo { get; set; }
     }
 }

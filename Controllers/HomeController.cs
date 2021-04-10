@@ -28,12 +28,11 @@ namespace INTEX2Mock.Controllers
 
         private int pageSize = 3;
 
-        public HomeController(ILogger<HomeController> logger, RoleManager<IdentityRole> roleManager, MummyDbContext mummyContext/*, MummySearchLogic mums*/)
+        public HomeController(ILogger<HomeController> logger, RoleManager<IdentityRole> roleManager, MummyDbContext mummyContext)
         {
             _logger = logger;
             _roleManager = roleManager;
             _mummyContext = mummyContext;
-            //_mummySearchLogic = mummySearchLogic;
         }
 
         //[Authorize(Policy = "readpolicy")]
@@ -46,15 +45,6 @@ namespace INTEX2Mock.Controllers
         {
             var mummyLogic = new MummySearchLogic(_mummyContext);
             int nullProps = 0;
-            //IQueryable<Mummy> queryModel;
-
-            //var filters = new UrlFiltering(searchModel);
-
-            var wumbo = RouteData?.Values["pageNum"];
-
-            var wumbo2 = Request.QueryString;
-
-            var x = ViewBag.MummyID;
 
             Type type = typeof(MummySearchModel);
             PropertyInfo[] propertyInfo = searchModel.GetType().GetProperties();
@@ -62,7 +52,6 @@ namespace INTEX2Mock.Controllers
             PropertyInfo[] properties = type.GetProperties();
             foreach (PropertyInfo property in properties)
             {
-                //Console.WriteLine("{0} = {1}", property.Name, property.GetValue(person, null));
                 if(property.GetValue(searchModel, null) == null)
                 {
                     nullProps = nullProps + 1;
@@ -82,17 +71,11 @@ namespace INTEX2Mock.Controllers
 
                 return View(new SeeMummiesViewModel
                 {
-                    /*Mummies = (_mummyContext.Mummies
+                    Mummies = (queryModel
                     .OrderBy(x => x.MummyID)
                     .Skip((pageNum - 1) * pageSize)
                     .Take(pageSize)
-                    .ToList()),*/
-
-                    Mummies = (queryModel
-                .OrderBy(x => x.MummyID)
-                .Skip((pageNum - 1) * pageSize)
-                .Take(pageSize)
-                .ToList()),
+                    .ToList()),
 
                     PageNumberingInfo = new PageNumberingInfo
                     {
@@ -103,8 +86,6 @@ namespace INTEX2Mock.Controllers
 
                     mummySearchModel = searchModel,
 
-                    pageNumberBtn = true,
-
                     UrlInfo = Request.QueryString.Value
 
                 }); 
@@ -113,17 +94,11 @@ namespace INTEX2Mock.Controllers
             {
                 return View(new SeeMummiesViewModel
                 {
-                    /*Mummies = (_mummyContext.Mummies
+                    Mummies = (_mummyContext.Mummies
                     .OrderBy(x => x.MummyID)
                     .Skip((pageNum - 1) * pageSize)
                     .Take(pageSize)
-                    .ToList()),*/
-
-                    Mummies = (_mummyContext.Mummies
-                .OrderBy(x => x.MummyID)
-                .Skip((pageNum - 1) * pageSize)
-                .Take(pageSize)
-                .ToList()),
+                    .ToList()),
 
                     PageNumberingInfo = new PageNumberingInfo
                     {
@@ -132,43 +107,10 @@ namespace INTEX2Mock.Controllers
                         TotalNumItems = (_mummyContext.Mummies.Count())
                     },
 
-                    mummySearchModel = searchModel,
-
-                    pageNumberBtn = false
+                    mummySearchModel = searchModel
 
                 });
             }
-
-            //return View(model);
-
-
-            //return View(new SeeMummiesViewModel
-            //{ 
-            //    /*Mummies = (_mummyContext.Mummies
-            //    .OrderBy(x => x.MummyID)
-            //    .Skip((pageNum - 1) * pageSize)
-            //    .Take(pageSize)
-            //    .ToList()),*/
-
-            //    Mummies = (queryModel
-            //    .OrderBy(x => x.MummyID)
-            //    .Skip((pageNum - 1) * pageSize)
-            //    .Take(pageSize)
-            //    .ToList()),
-
-            //    PageNumberingInfo = new PageNumberingInfo
-            //    {
-            //        NumItemsPerPage = pageSize,
-            //        CurrentPage = pageNum,
-            //        TotalNumItems = (queryModel.Count())
-            //    },
-
-            //    //mummySearchLogic = mummySearch
-
-            //});
-
-        // IQueryable<Mummy> mummy_DB = _mummyContext.Mummies;
-        // return View(mummy_DB);
         }
 
         [HttpPost]
@@ -241,16 +183,6 @@ namespace INTEX2Mock.Controllers
 
             return View("Confirmation", passedMummy);
         }
-
-        /*[HttpGet]
-        public IActionResult FilterMummies(MummySearchModel searchModel)
-        {
-            var mummyLogic = _mummySearchLogic;
-            var model = mummyLogic.GetMummies(searchModel);
-            return View(model);
-        }*/
-
-        
 
         public IActionResult Privacy()
         {
