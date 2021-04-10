@@ -75,6 +75,12 @@ namespace INTEX2Mock
 
             app.UseEndpoints(endpoints =>
             {
+                /*endpoints.MapControllerRoute(
+                    "filteredBranch",
+                    "ViewMummyRecords/{pagenum}/{searchModel}",
+                    new {Controller = "Home", action = "ViewMummyRecords"}
+                    );*/
+
                 endpoints.MapControllerRoute(
                     "pagenum",
                     "ViewMummyRecords/{pagenum}",

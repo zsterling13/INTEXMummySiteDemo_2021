@@ -36,27 +36,27 @@
         </table>
     </div>
 
-    @if (Model.pageNumberBtn == true)
-    {
-        <div page-info="@Model.PageNumberingInfo" page-classes-enabled="true" page-class="btn"
-             page-class-normal="btn-outline-dark"
-             page-class-selected="btn-dark"
-             page-btn="true"
-             class="text-center bg-info">
+    @*@if (Model.pageNumberBtn == true)
+        {*@
+    @*<div page-info="@Model.PageNumberingInfo" page-classes-enabled="true" page-class="btn"
+         page-class-normal="btn-outline-dark"
+         page-class-selected="btn-dark"
+         page-btn="true"
+         class="text-center bg-info">
 
-        </div>
-    }
+    </div>*@
+    <!--}-->
+    <!--else-->
+    <!--{-->
+    <div page-info="@Model.PageNumberingInfo" page-action="ViewMummyRecords" page-classes-enabled="true" page-class="btn"
+         page-class-normal="btn-outline-dark"
+         page-class-selected="btn-dark"
+         page-parameters="@Model.UrlInfo"
+         page-btn="false"
+         class="text-center bg-info">
 
-    else
-    {
-        <div page-info="@Model.PageNumberingInfo" page-classes-enabled="true" page-class="btn"
-             page-class-normal="btn-outline-dark"
-             page-class-selected="btn-dark"
-             page-btn="false"
-             class="text-center bg-info">
-
-        </div>
-    }
+    </div>
+    @*}*@
 
 
 </div>

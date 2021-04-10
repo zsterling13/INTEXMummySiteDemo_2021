@@ -48,6 +48,14 @@ namespace INTEX2Mock.Controllers
             int nullProps = 0;
             //IQueryable<Mummy> queryModel;
 
+            //var filters = new UrlFiltering(searchModel);
+
+            var wumbo = RouteData?.Values["pageNum"];
+
+            var wumbo2 = Request.QueryString;
+
+            var x = ViewBag.MummyID;
+
             Type type = typeof(MummySearchModel);
             PropertyInfo[] propertyInfo = searchModel.GetType().GetProperties();
 
@@ -95,7 +103,9 @@ namespace INTEX2Mock.Controllers
 
                     mummySearchModel = searchModel,
 
-                    pageNumberBtn = true
+                    pageNumberBtn = true,
+
+                    UrlInfo = Request.QueryString.Value
 
                 }); 
             }
