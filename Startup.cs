@@ -1,4 +1,5 @@
 using INTEX2Mock.Data;
+using INTEX2Mock.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,6 +34,9 @@ namespace INTEX2Mock
             services.AddDbContext<MummyDbContext>(options =>
             options.UseSqlServer(
                     Configuration.GetConnectionString("MummyConnection")));
+            services.AddDbContext<PWOIKMContext>(options =>
+            options.UseSqlServer(
+                    Configuration.GetConnectionString("FinalMummyConnection")));
             services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                  .AddDefaultUI()
                  .AddEntityFrameworkStores<ApplicationDbContext>()
