@@ -10,10 +10,10 @@
 @{
 }
 
-@model Mummy;
+@model Mummy
 
 <div>
-    <h1>Add a Movie</h1>
+    <h1>Edit a Mummy Record</h1>
     <br />
     <p>Enter in the information you would like to add for a new mummy record below.</p>
     <br />
@@ -22,15 +22,15 @@
     <form asp-action="EditMummyRecord" method="post">
         <div>
             <label asp-for="Name">Name</label>
-            <input asp-for="Name" value="@Model.Name"/>
+            <input asp-for="Name" value="@Model.Name" />
         </div>
         <div>
             <label asp-for="Age">Age</label>
-            <input asp-for="Age" value="@Model.Age"/>
+            <input asp-for="Age" value="@Model.Age" />
         </div>
         <input type="hidden" asp-for="MummyID" value="@Model.MummyID" />
 
-        <button type="submit">Add Mummy Record</button>
+        <button class="btn btn-primary"  type="submit">Confirm</button>
     </form>
 
     <!--Show any errors here-->

@@ -6,7 +6,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>@ViewData["Title"]</title>
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="~/assets/img/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -23,7 +23,7 @@
 <body id="page-top">
     <!-- Navigation-->
     <header>
-        <nav class="navbar navbar-light navbar-expand-lg  fixed-top" id="mainNav">
+        <nav class="navbar navbar-light navbar-expand-lg " id="mainNav">
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger" asp-area="" asp-controller="Home" asp-action="Index">Fag el Gamous</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -36,7 +36,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         @if (User.IsInRole("Admin"))
                         {
@@ -63,7 +63,7 @@
     </header>
     <!--<div class="container">
         <main role="main" class="pb-3">-->
-    <div style="margin-top:80px">
+    <div style="margin-top: 40px;margin-bottom: 3rem;">
         @RenderBody()
     </div>
     <!--</main>
