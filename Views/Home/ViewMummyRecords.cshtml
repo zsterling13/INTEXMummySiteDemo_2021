@@ -6,7 +6,12 @@
 }
 
 @model INTEX2Mock.Models.ViewModels.SeeMummiesViewModel
+
 <h1>@ViewData["Title"]</h1>
+<div>
+    <partial name="MummyFilterSummary" model="Model.mummySearchModel" />
+</div>
+
 <div class="text-center col-12">
     <div class="text-center">
         <!--Table that displays time slots and tells whether slot is available or unavailable-->
@@ -30,9 +35,11 @@
         </table>
     </div>
 
-    <div page-info="@Model.PageNumberingInfo" page-classes-enabled="true" page-class="btn" 
-     page-class-normal="btn-outline-dark"
-     page-class-selected="btn-dark"
-     class="nice">
+    <div page-info="@Model.PageNumberingInfo" page-action="ViewMummyRecords" page-classes-enabled="true" page-class="btn"
+         page-class-normal="btn-outline-dark"
+         page-class-selected="btn-dark"
+         page-parameters="@Model.UrlInfo"
+         page-btn="false"
+         class="text-center bg-info">
     </div>
 </div>

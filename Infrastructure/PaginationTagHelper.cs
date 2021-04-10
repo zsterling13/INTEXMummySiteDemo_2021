@@ -16,16 +16,13 @@ namespace INTEX2Mock.Infrastructure
     public class PaginationTagHelper : TagHelper
     {
         //Creates a UrlHelperFactory variable
-        private IUrlHelperFactory urlInfo;
+        private IUrlHelperFactory _urlInfo;
 
         //Constructor
         public PaginationTagHelper(IUrlHelperFactory uhf)
         {
-            urlInfo = uhf;
+            _urlInfo = uhf;
         }
-
-        //teamName string variable that is interacted with
-        public string teamName { get; set; }
 
         //PagenumberingInfo object for info in regards to the page info that Pagination needs to know
         public PageNumberingInfo PageInfo { get; set; }
@@ -41,8 +38,10 @@ namespace INTEX2Mock.Infrastructure
 
         public string PageAction { get; set; }
 
+        public string PageParameters { get; set; }
+
         //Own dictionary that has key value pairs that we are creating
-        [HtmlAttributeName(DictionaryAttributePrefix = "page-url-")]
+        [HtmlAttributeName(DictionaryAttributePrefix = "page-url")]
         public Dictionary<string, object> KeyValuePairs { get; set; } = new Dictionary<string, object>();
 
         //Creates a ViewContext Object
@@ -56,25 +55,27 @@ namespace INTEX2Mock.Infrastructure
 
             TagBuilder finishedTag = new TagBuilder("div");
 
-            IUrlHelper UrlHelp = urlInfo.GetUrlHelper(ViewContext);
+            IUrlHelper UrlHelp = _urlInfo.GetUrlHelper(ViewContext);
 
             //Main loop that runs through and creates every a tag for every page link dynamically
             for (int i = 1; i <= PageInfo.NumPages; i++)
             {
-                TagBuilder individualTag = new TagBuilder("a");
 
-                KeyValuePairs["pageNum"] = i;
-                individualTag.Attributes["href"] = UrlHelp.Action("ViewMummyRecords", KeyValuePairs);
-                individualTag.Attributes["style"] = "margin:0.5rem";
-                individualTag.InnerHtml.Append(i.ToString());
+                    TagBuilder individualTag = new TagBuilder("a");
 
-                if (PageClassesEnabled)
-                {
-                    individualTag.AddCssClass(PageClass);
-                    individualTag.AddCssClass(i == PageInfo.CurrentPage ? PageClassSelected : PageClassNormal);
-                }
+                    KeyValuePairs["pageNum"] = i;
 
-                finishedTag.InnerHtml.AppendHtml(individualTag);
+                    individualTag.Attributes["href"] = UrlHelp.Action("ViewMummyRecords", KeyValuePairs);
+                    individualTag.Attributes["href"] = individualTag.Attributes["href"] + PageParameters;
+                    individualTag.Attributes["style"] = "margin:0.5rem";
+                    individualTag.InnerHtml.Append(i.ToString());
+
+                    if (PageClassesEnabled)
+                    {
+                        individualTag.AddCssClass(PageClass);
+                        individualTag.AddCssClass(i == PageInfo.CurrentPage ? PageClassSelected : PageClassNormal);
+                    }
+                    finishedTag.InnerHtml.AppendHtml(individualTag);
             }
             output.Content.AppendHtml(finishedTag.InnerHtml);
         }
