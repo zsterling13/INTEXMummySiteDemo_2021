@@ -48,6 +48,7 @@ namespace INTEX2Mock
                 options.AddPolicy("writepolicy",
                     builder => builder.RequireRole("Admin", "Researcher"));
             });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

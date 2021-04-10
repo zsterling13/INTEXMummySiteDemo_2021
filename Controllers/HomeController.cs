@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Security.Claims;
 using INTEX2Mock.Data;
 using INTEX2Mock.Models.ViewModels;
+using INTEX2Mock.Models.Searching;
+using System.Reflection;
 
 namespace INTEX2Mock.Controllers
 {
@@ -22,42 +24,138 @@ namespace INTEX2Mock.Controllers
 
         private MummyDbContext _mummyContext { get; set; }
 
+        public MummySearchLogic _mummySearchLogic { get; set; }
+
         private int pageSize = 3;
 
-        public HomeController(ILogger<HomeController> logger, RoleManager<IdentityRole> roleManager, MummyDbContext mummyContext)
+        public HomeController(ILogger<HomeController> logger, RoleManager<IdentityRole> roleManager, MummyDbContext mummyContext/*, MummySearchLogic mums*/)
         {
             _logger = logger;
             _roleManager = roleManager;
             _mummyContext = mummyContext;
+            //_mummySearchLogic = mummySearchLogic;
         }
 
         //[Authorize(Policy = "readpolicy")]
         public IActionResult Index()
         {
-
             return View();
         }
 
-        
-
-        public IActionResult ViewMummyRecords(int pageNum = 1)
+        public IActionResult ViewMummyRecords(MummySearchModel? searchModel, int pageNum = 1)
         {
-            return View(new SeeMummiesViewModel
-            { 
-                Mummies = (_mummyContext.Mummies
+            var mummyLogic = new MummySearchLogic(_mummyContext);
+            int nullProps = 0;
+            //IQueryable<Mummy> queryModel;
+
+            Type type = typeof(MummySearchModel);
+            PropertyInfo[] propertyInfo = searchModel.GetType().GetProperties();
+
+            PropertyInfo[] properties = type.GetProperties();
+            foreach (PropertyInfo property in properties)
+            {
+                //Console.WriteLine("{0} = {1}", property.Name, property.GetValue(person, null));
+                if(property.GetValue(searchModel, null) == null)
+                {
+                    nullProps = nullProps + 1;
+                }
+            }
+
+            bool emptyFilter = false;
+
+            if(nullProps == properties.Count())
+            {
+                emptyFilter = true;
+            }
+
+            if (emptyFilter == false)
+            {
+                var queryModel = mummyLogic.GetMummies(searchModel);
+
+                return View(new SeeMummiesViewModel
+                {
+                    /*Mummies = (_mummyContext.Mummies
+                    .OrderBy(x => x.MummyID)
+                    .Skip((pageNum - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToList()),*/
+
+                    Mummies = (queryModel
                 .OrderBy(x => x.MummyID)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize)
                 .ToList()),
 
-                PageNumberingInfo = new PageNumberingInfo
-                {
-                    NumItemsPerPage = pageSize,
-                    CurrentPage = pageNum,
-                    TotalNumItems = (_mummyContext.Mummies.Count())
-                }
+                    PageNumberingInfo = new PageNumberingInfo
+                    {
+                        NumItemsPerPage = pageSize,
+                        CurrentPage = pageNum,
+                        TotalNumItems = (queryModel.Count())
+                    },
 
-            });
+                    mummySearchModel = searchModel,
+
+                    pageNumberBtn = true
+
+                }); 
+            }
+            else
+            {
+                return View(new SeeMummiesViewModel
+                {
+                    /*Mummies = (_mummyContext.Mummies
+                    .OrderBy(x => x.MummyID)
+                    .Skip((pageNum - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToList()),*/
+
+                    Mummies = (_mummyContext.Mummies
+                .OrderBy(x => x.MummyID)
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize)
+                .ToList()),
+
+                    PageNumberingInfo = new PageNumberingInfo
+                    {
+                        NumItemsPerPage = pageSize,
+                        CurrentPage = pageNum,
+                        TotalNumItems = (_mummyContext.Mummies.Count())
+                    },
+
+                    mummySearchModel = searchModel,
+
+                    pageNumberBtn = false
+
+                });
+            }
+
+            //return View(model);
+
+
+            //return View(new SeeMummiesViewModel
+            //{ 
+            //    /*Mummies = (_mummyContext.Mummies
+            //    .OrderBy(x => x.MummyID)
+            //    .Skip((pageNum - 1) * pageSize)
+            //    .Take(pageSize)
+            //    .ToList()),*/
+
+            //    Mummies = (queryModel
+            //    .OrderBy(x => x.MummyID)
+            //    .Skip((pageNum - 1) * pageSize)
+            //    .Take(pageSize)
+            //    .ToList()),
+
+            //    PageNumberingInfo = new PageNumberingInfo
+            //    {
+            //        NumItemsPerPage = pageSize,
+            //        CurrentPage = pageNum,
+            //        TotalNumItems = (queryModel.Count())
+            //    },
+
+            //    //mummySearchLogic = mummySearch
+
+            //});
 
         // IQueryable<Mummy> mummy_DB = _mummyContext.Mummies;
         // return View(mummy_DB);
@@ -133,6 +231,14 @@ namespace INTEX2Mock.Controllers
 
             return View("Confirmation", passedMummy);
         }
+
+        /*[HttpGet]
+        public IActionResult FilterMummies(MummySearchModel searchModel)
+        {
+            var mummyLogic = _mummySearchLogic;
+            var model = mummyLogic.GetMummies(searchModel);
+            return View(model);
+        }*/
 
         
 
