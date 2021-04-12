@@ -26,7 +26,7 @@ namespace INTEX2Mock.Controllers
 
         public MummySearchLogic _mummySearchLogic { get; set; }
 
-        private int pageSize = 3;
+        private int pageSize = 75;
 
         public HomeController(ILogger<HomeController> logger, RoleManager<IdentityRole> roleManager, PWOIKMContext mummyContext)
         {

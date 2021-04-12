@@ -2,7 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    ViewData["Title"] = "Mummy Record List";
+
 }
 
 @model INTEX2Mock.Models.ViewModels.SeeMummiesViewModel
@@ -10,7 +10,7 @@
 <div>
     <partial name="MummyFilterSummary" model="Model.mummySearchModel" />
 </div>
-<h1>@ViewData["Title"]</h1>
+
 <div class="text-center col-12">
     <div class="text-center">
         <!--Table that displays time slots and tells whether slot is available or unavailable-->
@@ -39,6 +39,6 @@
          page-class-normal="btn-outline-dark"
          page-class-selected="btn-dark"
          page-parameters="@Model.UrlInfo"
-         class="text-center bg-info">
+         class="text-center">
     </div>
 </div>
