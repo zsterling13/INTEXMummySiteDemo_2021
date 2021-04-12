@@ -2,11 +2,12 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-
+    ViewData["Title"] = "Mummy Record List";
 }
 @model INTEX2Mock.Models.Searching.MummySearchModel
-
-<form method="get" id="filterForm">
+<h1>@ViewData["Title"]</h1>
+<form method="get" id="filterForm" name="filterForm" class="mb-3">
+    <h4 class="filter">Burial Information</h4>
     <label asp-for="burialLocationNS">Burial Location (NS)</label>
     <select asp-for="burialLocationNS">
         <option></option>
@@ -18,7 +19,7 @@
         </option>
     </select>
 
-    <label>Burial Locaiton (EW)</label>
+    <label>Burial Location (EW)</label>
     <select asp-for="burialLocationEW">
         <option></option>
         <option value="E">
@@ -29,6 +30,13 @@
         </option>
     </select>
 
+    <label asp-for="artifacts">Burial Goods Found: </label>
+    <select asp-for="artifacts">
+        <option></option>
+        <option value=True>Yes</option>
+        <option value=False>No</option>
+    </select>
+    <br />
     <label asp-for="burialSituation">Burial Situation</label>
     <input type="text" asp-for="burialSituation" />
 
@@ -41,6 +49,11 @@
         <option value="SW">SW</option>
     </select>
 
+    <label asp-for="burialNumber">Burial Number:</label>
+    <input type="text" asp-for="burialNumber">
+
+    <br />
+    <h4 class="filter">Mummy Information</h4>
     <label asp-for="gender">Gender/Sex</label>
     <select asp-for="gender">
         <option></option>
@@ -61,8 +74,6 @@
         </option>
     </select>
 
-    <label asp-for="burialNumber">Burial Number:</label>
-    <input type="text" asp-for="burialNumber">
 
     <label asp-for="headDirection">Head Direction</label>
     <select asp-for="headDirection">
@@ -78,12 +89,7 @@
         </option>
     </select>
 
-    <label asp-for="artifacts">Burial Goods Found: </label>
-    <select asp-for="artifacts">
-        <option></option>
-        <option value=True>Yes</option>
-        <option value=False>No</option>
-    </select>
+
 
     <label asp-for="preservationIndex">Preservation Index: </label>
     <select asp-for="preservationIndex">
@@ -98,11 +104,11 @@
 
     <label asp-for="hairColor">Hair Color</label>
     <input type="text" asp-for="hairColor" />
-
-    <label asp-for="yearFound">Year Of Excevation: </label>
+    <br />
+    <label asp-for="yearFound">Year Of Excavation: </label>
     <input type="text" asp-for="yearFound" />
-    
-    <label asp-for="monthFound">Date Of Excevation: </label>
+
+    <label asp-for="monthFound">Month Of Excavation: </label>
     <select asp-for="monthFound">
         <option></option>
         <option value="January">
@@ -146,11 +152,13 @@
     <label asp-for="ageClassification">Age Classification</label>
     <select asp-for="ageClassification">
         <option></option>
-        <option value="A">A</option>
-        <option value="C">C</option>
-        <option value="NI">N/I</option>
-        <option value="U">U</option>
+        <option value="A">Adult (15 years or older)</option>
+        <option value="C">Child (Between 3 and 15 years old)</option>
+        <option value="NI">Newborn/Infant (3 years or under)</option>
+        <option value="U">Unknown</option>
     </select>
+    <br />
+    <button class="btn btn-primary" type="submit" form="filterForm">Search</button>
 
-    <button type="submit" form="filterForm">Search</button>
+    <button class="btn btn-danger "><a class="yessir" asp-action="ViewMummyRecords">Clear All</a></button>
 </form>

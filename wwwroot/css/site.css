@@ -125,4 +125,17 @@ button{
 
     .bigups:hover {
         transform: scale(1.05);
-    } 
+    }
+
+    .filter{
+        font-weight:700;
+    }
+
+    .yessir{
+        color:white;
+        text-decoration:none;
+    }
+.yessir:hover {
+    color: white;
+    text-decoration: none;
+}
