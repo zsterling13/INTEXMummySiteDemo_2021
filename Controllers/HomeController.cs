@@ -22,13 +22,13 @@ namespace INTEX2Mock.Controllers
 
         RoleManager<IdentityRole> _roleManager;
 
-        private MummyDbContext _mummyContext { get; set; }
+        private PWOIKMContext _mummyContext { get; set; }
 
         public MummySearchLogic _mummySearchLogic { get; set; }
 
         private int pageSize = 3;
 
-        public HomeController(ILogger<HomeController> logger, RoleManager<IdentityRole> roleManager, MummyDbContext mummyContext)
+        public HomeController(ILogger<HomeController> logger, RoleManager<IdentityRole> roleManager, PWOIKMContext mummyContext)
         {
             _logger = logger;
             _roleManager = roleManager;
@@ -72,7 +72,7 @@ namespace INTEX2Mock.Controllers
                 return View(new SeeMummiesViewModel
                 {
                     Mummies = (queryModel
-                    .OrderBy(x => x.MummyID)
+                    .OrderBy(x => x.PrimaryKeyId)
                     .Skip((pageNum - 1) * pageSize)
                     .Take(pageSize)
                     .ToList()),
@@ -92,10 +92,11 @@ namespace INTEX2Mock.Controllers
             }
             else
             {
+
                 return View(new SeeMummiesViewModel
                 {
-                    Mummies = (_mummyContext.Mummies
-                    .OrderBy(x => x.MummyID)
+                    Mummies = (_mummyContext.MainTables
+                    .OrderBy(x => x.PrimaryKeyId)
                     .Skip((pageNum - 1) * pageSize)
                     .Take(pageSize)
                     .ToList()),
@@ -104,7 +105,7 @@ namespace INTEX2Mock.Controllers
                     {
                         NumItemsPerPage = pageSize,
                         CurrentPage = pageNum,
-                        TotalNumItems = (_mummyContext.Mummies.Count())
+                        TotalNumItems = (_mummyContext.MainTables.Count())
                     },
 
                     mummySearchModel = searchModel
@@ -114,7 +115,7 @@ namespace INTEX2Mock.Controllers
         }
 
         [HttpPost]
-        public IActionResult ViewMummyRecords(Mummy passedMummy)
+        public IActionResult ViewMummyRecords(PWOIKMContext passedMummy)
         {
             return View("EditMummyRecord", passedMummy);
         }
@@ -125,12 +126,12 @@ namespace INTEX2Mock.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddMummyRecord(Mummy newRecord)
+        public IActionResult AddMummyRecord(MainTable newRecord)
         {
             if (ModelState.IsValid == true)
             {
                 //Communicates with the sqlite database through the private context object to modify data in the database
-                _mummyContext.Mummies.Add(newRecord);
+                _mummyContext.MainTables.Add(newRecord);
                 _mummyContext.SaveChanges();
 
                 return View("Confirmation", newRecord);
@@ -143,18 +144,18 @@ namespace INTEX2Mock.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditMummyRecord(Mummy passedMummy)
+        public IActionResult EditMummyRecord(MainTable passedMummy)
         {
             if (ModelState.IsValid == true)
             {
                     //Create an Iqueryable object that returns the one specific record that is being edited
-                    IQueryable<Mummy> editingMummy = _mummyContext.Mummies.Where(p => p.MummyID == passedMummy.MummyID);
+                    IQueryable<MainTable> editingMummy = _mummyContext.MainTables.Where(p => p.PrimaryKeyId == passedMummy.PrimaryKeyId);
 
                     //loop to edit the data of the desired record
                     foreach (var x in editingMummy)
                     {
-                        x.Name = passedMummy.Name;
-                        x.Age = passedMummy.Age;
+                        //x.Name = passedMummy.Name;
+                        //x.Age = passedMummy.Age;
                     }
 
                     _mummyContext.SaveChanges();
@@ -169,14 +170,14 @@ namespace INTEX2Mock.Controllers
         }
 
         [HttpPost]
-        public IActionResult RemoveRecord(Mummy passedMummy)
+        public IActionResult RemoveRecord(MainTable passedMummy)
         {
-            IQueryable<Mummy> removingRecord = _mummyContext.Mummies.Where(p => p.MummyID == passedMummy.MummyID);
+            IQueryable<MainTable> removingRecord = _mummyContext.MainTables.Where(p => p.PrimaryKeyId == passedMummy.PrimaryKeyId);
 
             //loop to remove the record in the database
             foreach (var x in removingRecord)
             {
-                _mummyContext.Mummies.Remove(x);
+                //_mummyContext.Mummies.Remove(x);
             }
 
             _mummyContext.SaveChanges();
