@@ -8,7 +8,9 @@ namespace INTEX2Mock.Models.ViewModels
 {
     public class SeeMummiesViewModel
     {
-        public IEnumerable<Mummy> Mummies { get; set; }
+        //public IEnumerable<Mummy> Mummies { get; set; }
+        
+        public IEnumerable<MainTable> Mummies { get; set; }
 
         public PageNumberingInfo PageNumberingInfo { get; set; }
 

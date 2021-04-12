@@ -6,17 +6,151 @@
 }
 @model INTEX2Mock.Models.Searching.MummySearchModel
 
-    <form method="get" id="filterForm">
-        <label asp-for="MummyID">Mummy ID</label>
-        <input asp-for="MummyID" />
+<form method="get" id="filterForm">
+    <label asp-for="burialLocationNS">Burial Location (NS)</label>
+    <select asp-for="burialLocationNS">
+        <option></option>
+        <option value="N">
+            North
+        </option>
+        <option value="S">
+            South
+        </option>
+    </select>
 
-        <label asp-for="Name">Name</label>
-        <input asp-for="Name" />
+    <label>Burial Locaiton (EW)</label>
+    <select asp-for="burialLocationEW">
+        <option></option>
+        <option value="E">
+            East
+        </option>
+        <option value="W">
+            West
+        </option>
+    </select>
 
-        <label asp-for="AgeFrom">Age From</label>
-        <input asp-for="AgeFrom" >
+    <label asp-for="burialSituation">Burial Situation</label>
+    <input type="text" asp-for="burialSituation" />
 
-        <label asp-for="AgeTo">Age To</label>
-        <input asp-for="AgeTo" />
-        <button type="submit" form="filterForm">Search</button>
-    </form>
+    <label asp-for="burialSubplot">Area: </label>
+    <select asp-for="burialSubplot">
+        <option></option>
+        <option value="SE">SE</option>
+        <option value="NE">NE</option>
+        <option value="NW">NW</option>
+        <option value="SW">SW</option>
+    </select>
+
+    <label asp-for="gender">Gender/Sex</label>
+    <select asp-for="gender">
+        <option></option>
+        <option value="M">
+            Male
+        </option>
+        <option value="F">
+            Female
+        </option>
+        <option value="C">
+            Child
+        </option>
+        <option value="U">
+            Undetermined
+        </option>
+        <option value="S">
+            S
+        </option>
+    </select>
+
+    <label asp-for="burialNumber">Burial Number:</label>
+    <input type="text" asp-for="burialNumber">
+
+    <label asp-for="headDirection">Head Direction</label>
+    <select asp-for="headDirection">
+        <option></option>
+        <option value="E">
+            East
+        </option>
+        <option value="W">
+            West
+        </option>
+        <option value="U">
+            Unknown
+        </option>
+    </select>
+
+    <label asp-for="artifacts">Burial Goods Found: </label>
+    <select asp-for="artifacts">
+        <option></option>
+        <option value=True>Yes</option>
+        <option value=False>No</option>
+    </select>
+
+    <label asp-for="preservationIndex">Preservation Index: </label>
+    <select asp-for="preservationIndex">
+        <option></option>
+        <option value="I">I</option>
+        <option value="II">II</option>
+        <option value="III">III</option>
+        <option value="IV">IV</option>
+        <option value="V">V</option>
+        <option value="VI">VI</option>
+    </select>
+
+    <label asp-for="hairColor">Hair Color</label>
+    <input type="text" asp-for="hairColor" />
+
+    <label asp-for="yearFound">Year Of Excevation: </label>
+    <input type="text" asp-for="yearFound" />
+    
+    <label asp-for="monthFound">Date Of Excevation: </label>
+    <select asp-for="monthFound">
+        <option></option>
+        <option value="January">
+            January
+        </option>
+        <option value="Feb">
+            February
+        </option>
+        <option value="March">
+            March
+        </option>
+        <option value="April">
+            April
+        </option>
+        <option value="May">
+            May
+        </option>
+        <option value="June">
+            June
+        </option>
+        <option value="July">
+            July
+        </option>
+        <option value="August">
+            August
+        </option>
+        <option value="September">
+            September
+        </option>
+        <option value="October">
+            October
+        </option>
+        <option value="November">
+            November
+        </option>
+        <option value="December">
+            December
+        </option>
+    </select>
+
+    <label asp-for="ageClassification">Age Classification</label>
+    <select asp-for="ageClassification">
+        <option></option>
+        <option value="A">A</option>
+        <option value="C">C</option>
+        <option value="NI">N/I</option>
+        <option value="U">U</option>
+    </select>
+
+    <button type="submit" form="filterForm">Search</button>
+</form>
