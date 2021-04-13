@@ -12,10 +12,12 @@
     <br />
 
     <!--Form where the user will enter in information to be run through the Add_Movie Action in the Home Controller-->
-    <form asp-action="EditMummyRecord" method="post">
+    <form asp-action="EditMummyRecordPost" method="post">
 
         <label asp-for="BurialId">BurialId</label>
         <input asp-for="BurialId" value="@Model.BurialId" />
+        
+        <input asp-for="PrimaryKeyId" type="hidden" value="@Model.PrimaryKeyId"/>
 
 
         <p>@Model.C14Id</p>
