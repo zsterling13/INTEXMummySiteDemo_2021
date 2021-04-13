@@ -121,7 +121,7 @@ namespace INTEX2Mock.Controllers
         {
             return View("EditMummyRecord", passedMummy);
         }
-
+        [HttpGet]
         public IActionResult AddMummyRecord()
         {
             return View();
