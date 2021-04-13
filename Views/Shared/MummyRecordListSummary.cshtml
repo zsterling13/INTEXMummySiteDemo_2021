@@ -7,31 +7,37 @@
 <!--Dynamically input appropriate values from each possible time slots by reference to the database-->
 <tr id="highlight">
     <td>@Model.PrimaryKeyId</td>
-    <td>@Model.PrimaryKeyId</td>
-    <td>@Model.PrimaryKeyId</td>
+    <td>@Model.BurialLocationNs</td>
+    <td>@Model.LowPairNs</td>
+    <td>@Model.BurialLocationEw</td>
+    <td>@Model.LowPairEw</td>
+    <td>@Model.BurialSubplot</td>
+    <td>@Model.LengthOfRemains</td>
+    <td>@Model.HairColor</td>
+    <td>@Model.YearFound</td>
     <td>
         @if (User.IsInRole("Admin"))
         {
-            <form method="post">
+            <form method="get" asp-action="EditMummyRecord">
                 <input type="hidden" asp-for="PrimaryKeyId" value="@Model.PrimaryKeyId" />
-                <input type="hidden" asp-for="PrimaryKeyId" value="@Model.DateOnSkull" />
-                <input type="hidden" asp-for="PrimaryKeyId" value="@Model.AgeClassification" />
+                @*<input type="hidden" asp-for="PrimaryKeyId" value="@Model.DateOnSkull" />
+                <input type="hidden" asp-for="PrimaryKeyId" value="@Model.AgeClassification" />*@
                 <button type="submit" class="btn btn-success" style="margin-bottom:3%">Edit</button>
             </form>
 
             <!--Button that allows the user to remove the movie record that has been requested-->
-            <form method="post" asp-action="RemoveRecord">
-                <input type="hidden" asp-for="PrimaryKeyId" value="@Model.SampleId" />
+            <form method="post" asp-action="DeleteMummyRecord">
+                @*<input type="hidden" asp-for="PrimaryKeyId" value="@Model.SampleId" />*@
                 <input type="hidden" asp-for="PrimaryKeyId" value="@Model.PrimaryKeyId" />
                 <button type="submit" class="btn btn-danger">Remove</button>
             </form>
         }
-        else if (User.IsInRole("Manager"))
+        else if (User.IsInRole("Researcher"))
         {
-            <form method="post">
+            <form method="get" asp-action="EditMummyRecord">
                 <input type="hidden" asp-for="PrimaryKeyId" value="@Model.PrimaryKeyId" />
-                <input type="hidden" asp-for="PrimaryKeyId" value="@Model.PrimaryKeyId" />
-                <input type="hidden" asp-for="PrimaryKeyId" value="@Model.PrimaryKeyId" />
+                @*<input type="hidden" asp-for="PrimaryKeyId" value="@Model.PrimaryKeyId" />
+                <input type="hidden" asp-for="PrimaryKeyId" value="@Model.PrimaryKeyId" />*@
                 <button type="submit" class="btn btn-success" style="margin-bottom:3%">Edit</button>
             </form>
         }

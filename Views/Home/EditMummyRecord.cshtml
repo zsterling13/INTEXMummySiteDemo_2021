@@ -3,34 +3,462 @@
 *@
 @{
 }
-
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
-@model Mummy
+@model MainTable
 
 <div>
-    <h1>Edit a Mummy Record</h1>
+    <h1>Edit Record: @Model.PrimaryKeyId</h1>
     <br />
     <p>Enter in the information you would like to add for a new mummy record below.</p>
     <br />
 
     <!--Form where the user will enter in information to be run through the Add_Movie Action in the Home Controller-->
     <form asp-action="EditMummyRecord" method="post">
-        <div>
-            <label asp-for="Name">Name</label>
-            <input asp-for="Name" value="@Model.Name" />
-        </div>
-        <div>
-            <label asp-for="Age">Age</label>
-            <input asp-for="Age" value="@Model.Age" />
-        </div>
-        <input type="hidden" asp-for="MummyID" value="@Model.MummyID" />
 
-        <button class="btn btn-primary"  type="submit">Confirm</button>
+        <label asp-for="BurialId">BurialId</label>
+        <input asp-for="BurialId" value="@Model.BurialId" />
+
+
+        <p>@Model.C14Id</p>
+        <p>@Model.SampleId</p>
+
+        <label asp-for="BurialLocationNs">BurialLocationNs</label>
+        <input asp-for="BurialLocationNs" value="@Model.BurialLocationNs" />
+
+
+        <label asp-for="BurialLocationEw">BurialLocationEw</label>
+        <input asp-for="BurialLocationEw" value="@Model.BurialLocationEw" />
+
+
+        <label asp-for="LowPairNs">LowPairNs</label>
+        <input asp-for="LowPairNs" value="@Model.LowPairNs" />
+
+
+        <label asp-for="HighPairNs">HighPairNs</label>
+        <input asp-for="HighPairNs" value="@Model.HighPairNs" />
+
+
+        <label asp-for="LowPairEw">LowPairEw</label>
+        <input asp-for="LowPairEw" value="@Model.LowPairEw" />
+
+
+        <label asp-for="HighPairEw">HighPairEw</label>
+        <input asp-for="HighPairEw" value="@Model.HighPairEw" />
+
+
+        <label asp-for="BurialSubplot">BurialSubplot</label>
+        <input asp-for="BurialSubplot" value="@Model.BurialSubplot" />
+
+
+        <label asp-for="BurialNumber">BurialNumber</label>
+        <input asp-for="BurialNumber" value="@Model.BurialNumber" />
+
+
+        <label asp-for="BurialDepth">BurialDepth</label>
+        <input asp-for="BurialDepth" value="@Model.BurialDepth" />
+
+
+        <label asp-for="FieldBook">Fieldbook</label>
+        <input asp-for="FieldBook" value="@Model.FieldBook" />
+
+
+        <label asp-for="FieldBookPageNum">FieldBookPageNum</label>
+        <input asp-for="FieldBookPageNum" value="@Model.FieldBookPageNum" />
+
+
+        <label asp-for="InitialOfDataExpert">InitialOfDataExpert</label>
+        <input asp-for="InitialOfDataExpert" value="@Model.InitialOfDataExpert" />
+
+
+        <label asp-for="InitialsChecker">InitialsChecker</label>
+        <input asp-for="InitialsChecker" value="@Model.InitialsChecker" />
+
+
+        <label asp-for="BodyAnalyzeYear">BodyAnalyzeYear</label>
+        <input asp-for="BodyAnalyzeYear" value="@Model.BodyAnalyzeYear" />
+
+
+        <label asp-for="SouthToHead">SouthToHead</label>
+        <input asp-for="SouthToHead" value="@Model.SouthToHead" />
+
+
+        <label asp-for="SouthToFeet">SouthToFeet</label>
+        <input asp-for="SouthToFeet" value="@Model.SouthToFeet" />
+
+
+        <label asp-for="EastToHead">EastToHead</label>
+        <input asp-for="EastToHead" value="@Model.EastToHead" />
+
+
+        <label asp-for="EastToFeet">EastToFeet</label>
+        <input asp-for="EastToFeet" value="@Model.EastToFeet" />
+
+
+        <label asp-for="WestToHead">WestToHead</label>
+        <input asp-for="WestToHead" value="@Model.WestToHead" />
+
+
+        <label asp-for="WestToFeet">WestToFeet</label>
+        <input asp-for="WestToFeet" value="@Model.WestToFeet" />
+
+
+        <label asp-for="BurialSituation">BurialSituation</label>
+        <input asp-for="BurialSituation" value="@Model.BurialSituation" />
+
+
+        <label asp-for="LengthOfRemains">LengthOfRemains</label>
+        <input asp-for="LengthOfRemains" value="@Model.LengthOfRemains" />
+
+
+        <label asp-for="SampleNumber">SampleNumber</label>
+        <input asp-for="SampleNumber" value="@Model.SampleNumber" />
+
+
+        <label asp-for="GeFunctionTotal">GeFunctionTotal</label>
+        <input asp-for="GeFunctionTotal" value="@Model.GeFunctionTotal" />
+
+
+        <label asp-for="GenderBodyCol">GenderBodyCol</label>
+        <input asp-for="GenderBodyCol" value="@Model.GenderBodyCol" />
+
+
+        <label asp-for="HowGenderDetermined">HowGenderDetermined</label>
+        <input asp-for="HowGenderDetermined" value="@Model.HowGenderDetermined" />
+
+
+        <label asp-for="BasilarSuture">BasilarSuture</label>
+        <input asp-for="BasilarSuture" value="@Model.BasilarSuture" />
+
+
+        <label asp-for="VentralArc">VentralArc</label>
+        <input asp-for="VentralArc" value="@Model.VentralArc" />
+
+
+        <label asp-for="SubpubicAngle">SubpubicAngle</label>
+        <input asp-for="SubpubicAngle" value="@Model.SubpubicAngle" />
+
+
+        <label asp-for="SciaticNotch">SciaticNotch</label>
+        <input asp-for="SciaticNotch" value="@Model.SciaticNotch" />
+
+
+        <label asp-for="PubicBone">PubicBone</label>
+        <input asp-for="PubicBone" value="@Model.PubicBone" />
+
+
+        <label asp-for="PreaurSulcus">PreaurSulcus</label>
+        <input asp-for="PreaurSulcus" value="@Model.PreaurSulcus" />
+
+
+        <label asp-for="MedialIpRamus">MedialIpRamus</label>
+        <input asp-for="MedialIpRamus" value="@Model.MedialIpRamus" />
+
+
+        <label asp-for="DorsalPitting">DorsalPitting</label>
+        <input asp-for="DorsalPitting" value="@Model.DorsalPitting" />
+
+
+        <label asp-for="ForemanMagnum">ForemanMagnum</label>
+        <input asp-for="ForemanMagnum" value="@Model.ForemanMagnum" />
+
+
+        <label asp-for="FemurHead">FemurHead</label>
+        <input asp-for="FemurHead" value="@Model.FemurHead" />
+
+
+        <label asp-for="HumerusHead">HumerusHead</label>
+        <input asp-for="HumerusHead" value="@Model.HumerusHead" />
+
+
+        <label asp-for="Osteophytosis">Osteophytosis</label>
+        <input asp-for="Osteophytosis" value="@Model.Osteophytosis" />
+
+
+        <label asp-for="PubicSymphysis">PubicSymphysis</label>
+        <input asp-for="PubicSymphysis" value="@Model.PubicSymphysis" />
+
+
+        <label asp-for="BoneLength">BoneLength</label>
+        <input asp-for="BoneLength" value="@Model.BoneLength" />
+
+
+        <label asp-for="MedialClavicle">MedialClavicle</label>
+        <input asp-for="MedialClavicle" value="@Model.MedialClavicle" />
+
+
+        <label asp-for="IliacCrest">IliacCrest</label>
+        <input asp-for="IliacCrest" value="@Model.IliacCrest" />
+
+
+        <label asp-for="FemurDiameter">FemurDiameter</label>
+        <input asp-for="FemurDiameter" value="@Model.FemurDiameter" />
+
+
+        <label asp-for="Humerus">Humerus</label>
+        <input asp-for="Humerus" value="@Model.Humerus" />
+
+
+        <label asp-for="FemurLength">FemurLength</label>
+        <input asp-for="FemurLength" value="@Model.FemurLength" />
+
+
+        <label asp-for="HumerusLength">HumerusLength</label>
+        <input asp-for="HumerusLength" value="@Model.HumerusLength" />
+
+
+        <label asp-for="TibiaLength">TibiaLength</label>
+        <input asp-for="TibiaLength" value="@Model.TibiaLength" />
+
+
+        <label asp-for="Robust">Robust</label>
+        <input asp-for="Robust" value="@Model.Robust" />
+
+
+        <label asp-for="SupraorbitalRidges">SupraorbitalRidges</label>
+        <input asp-for="SupraorbitalRidges" value="@Model.SupraorbitalRidges" />
+
+
+        <label asp-for="OrbitEdge">OrbitEdge</label>
+        <input asp-for="OrbitEdge" value="@Model.OrbitEdge" />
+
+
+        <label asp-for="ParietalBossing">ParietalBossing</label>
+        <input asp-for="ParietalBossing" value="@Model.ParietalBossing" />
+
+
+        <label asp-for="Gonian">Gonian</label>
+        <input asp-for="Gonian" value="@Model.Gonian" />
+
+
+        <label asp-for="NuchalCrest">NuchalCrest</label>
+        <input asp-for="NuchalCrest" value="@Model.NuchalCrest" />
+
+
+        <label asp-for="ZygomaticCrest">ZygomaticCrest</label>
+        <input asp-for="ZygomaticCrest" value="@Model.ZygomaticCrest" />
+
+
+        <label asp-for="CranialSuture">CranialSuture</label>
+        <input asp-for="CranialSuture" value="@Model.CranialSuture" />
+
+
+        <label asp-for="MaximumCranialLength">MaximumCranialLength</label>
+        <input asp-for="MaximumCranialLength" value="@Model.MaximumCranialLength" />
+
+
+        <label asp-for="MaximumCranialBreadth">MaximumCranialBreadth</label>
+        <input asp-for="MaximumCranialBreadth" value="@Model.MaximumCranialBreadth" />
+
+
+        <label asp-for="BasionBregmaHeight">BasionBregmaHeight</label>
+        <input asp-for="BasionBregmaHeight" value="@Model.BasionBregmaHeight" />
+
+
+        <label asp-for="BasionNasion">BasionNasion</label>
+        <input asp-for="BasionNasion" value="@Model.BasionNasion" />
+
+
+        <label asp-for="BasionProsthionLength">BasionProsthionLength</label>
+        <input asp-for="BasionProsthionLength" value="@Model.BasionProsthionLength" />
+
+
+        <label asp-for="BizygomaticDiameter">BizygomaticDiameter</label>
+        <input asp-for="BizygomaticDiameter" value="@Model.BizygomaticDiameter" />
+
+
+        <label asp-for="NasionProsthion">NasionProsthion</label>
+        <input asp-for="NasionProsthion" value="@Model.NasionProsthion" />
+
+
+        <label asp-for="MaximumNasalBreadth">MaximumNasalBreadth</label>
+        <input asp-for="MaximumNasalBreadth" value="@Model.MaximumNasalBreadth" />
+
+
+        <label asp-for="InterorbitalBreadth">InterorbitalBreadth</label>
+        <input asp-for="InterorbitalBreadth" value="@Model.InterorbitalBreadth" />
+
+
+        <label asp-for="ArtifactsDescription">ArtifactsDescription</label>
+        <input asp-for="ArtifactsDescription" value="@Model.ArtifactsDescription" />
+
+
+        <label asp-for="HairColor">HairColor</label>
+        <input asp-for="HairColor" value="@Model.HairColor" />
+
+
+        <label asp-for="PreservationIndex">PreservationIndex</label>
+        <input asp-for="PreservationIndex" value="@Model.PreservationIndex" />
+
+
+        <label asp-for="HairTaken">HairTaken</label>
+        <input asp-for="HairTaken" value="@Model.HairTaken" />
+
+
+        <label asp-for="SoftTissueTaken">SoftTissueTaken</label>
+        <input asp-for="SoftTissueTaken" value="@Model.SoftTissueTaken" />
+
+
+        <label asp-for="BoneTaken">BoneTaken</label>
+        <input asp-for="BoneTaken" value="@Model.BoneTaken" />
+
+
+        <label asp-for="ToothTaken">ToothTaken</label>
+        <input asp-for="ToothTaken" value="@Model.ToothTaken" />
+
+
+        <label asp-for="TextileTaken">TextileTaken</label>
+        <input asp-for="TextileTaken" value="@Model.TextileTaken" />
+
+
+        <label asp-for="DescriptionOfTaken">DescriptionOfTaken</label>
+        <input asp-for="DescriptionOfTaken" value="@Model.DescriptionOfTaken" />
+
+
+        <label asp-for="ArtifactFound">ArtifactFound</label>
+        <input asp-for="ArtifactFound" value="@Model.ArtifactFound" />
+
+
+        <label asp-for="AgeMethod">AgeMethod</label>
+        <input asp-for="AgeMethod" value="@Model.AgeMethod" />
+
+
+        <label asp-for="EstimateAge">EstimateAge</label>
+        <input asp-for="EstimateAge" value="@Model.EstimateAge" />
+
+
+        <label asp-for="AgeClassification">AgeClassification</label>
+        <input asp-for="AgeClassification" value="@Model.AgeClassification" />
+
+
+        <label asp-for="EstimateLivingStature">EstimateLivingStature</label>
+        <input asp-for="EstimateLivingStature" value="@Model.EstimateLivingStature" />
+
+
+        <label asp-for="ToothAttrition">ToothAttrition</label>
+        <input asp-for="ToothAttrition" value="@Model.ToothAttrition" />
+
+
+        <label asp-for="ToothEruption">ToothEruption</label>
+        <input asp-for="ToothEruption" value="@Model.ToothEruption" />
+
+
+        <label asp-for="PathologyAnomalies">PathologyAnomalies</label>
+        <input asp-for="PathologyAnomalies" value="@Model.PathologyAnomalies" />
+
+
+        <label asp-for="EpiphysealUnion">EpiphysealUnion</label>
+        <input asp-for="EpiphysealUnion" value="@Model.EpiphysealUnion" />
+
+
+        <label asp-for="YearFound">YearFound</label>
+        <input asp-for="YearFound" value="@Model.YearFound" />
+
+
+        <label asp-for="MonthFound">MonthFound</label>
+        <input asp-for="MonthFound" value="@Model.MonthFound" />
+
+
+        <label asp-for="DayFound">DayFound</label>
+        <input asp-for="DayFound" value="@Model.DayFound" />
+
+
+        <label asp-for="HeadDirection">HeadDirection</label>
+        <input asp-for="HeadDirection" value="@Model.HeadDirection" />
+
+
+        <label asp-for="Rack">Rack</label>
+        <input asp-for="Rack" value="@Model.Rack" />
+
+
+        <label asp-for="CribraOrbitala">CribraOrbitala</label>
+        <input asp-for="CribraOrbitala" value="@Model.CribraOrbitala" />
+
+
+        <label asp-for="PoroticHyperostosis">PoroticHyperostosis</label>
+        <input asp-for="PoroticHyperostosis" value="@Model.PoroticHyperostosis" />
+
+
+        <label asp-for="PoroticHyperostosisLocations">PoroticHyperostosisLocations</label>
+        <input asp-for="PoroticHyperostosisLocations" value="@Model.PoroticHyperostosisLocations" />
+
+
+        <label asp-for="MetopicSuture">MetopicSuture</label>
+        <input asp-for="MetopicSuture" value="@Model.MetopicSuture" />
+
+
+        <label asp-for="ButtonOsteoma">ButtonOsteoma</label>
+        <input asp-for="ButtonOsteoma" value="@Model.ButtonOsteoma" />
+
+
+        <label asp-for="PostcraniaTrauma">PostcraniaTrauma</label>
+        <input asp-for="PostcraniaTrauma" value="@Model.PostcraniaTrauma" />
+
+
+        <label asp-for="OsteologyUnknownComment">OsteologyUnknownComment</label>
+        <input asp-for="OsteologyUnknownComment" value="@Model.OsteologyUnknownComment" />
+
+
+        <label asp-for="TemporalMandibularJointOsteoarthritisTmjOa">TemporalMandibularJointOsteoarthritisTmjOa</label>
+        <input asp-for="TemporalMandibularJointOsteoarthritisTmjOa" value="@Model.TemporalMandibularJointOsteoarthritisTmjOa" />
+
+
+        <label asp-for="LinearHypoplasiaEnamel">LinearHypoplasiaEnamel</label>
+        <input asp-for="LinearHypoplasiaEnamel" value="@Model.LinearHypoplasiaEnamel" />
+
+
+        <label asp-for="AreaHillBurials">AreaHillBurials</label>
+        <input asp-for="AreaHillBurials" value="@Model.AreaHillBurials" />
+
+
+        <label asp-for="Tomb">Tomb</label>
+        <input asp-for="Tomb" value="@Model.Tomb" />
+
+
+        <label asp-for="YearOnSkull">YearOnSkull</label>
+        <input asp-for="YearOnSkull" value="@Model.YearOnSkull" />
+
+
+        <label asp-for="MonthOnSkull">MonthOnSkull</label>
+        <input asp-for="MonthOnSkull" value="@Model.MonthOnSkull" />
+
+
+        <label asp-for="DateOnSkull">DateOnSkull</label>
+        <input asp-for="DateOnSkull" value="@Model.DateOnSkull" />
+
+
+        <label asp-for="Cluster">Cluster</label>
+        <input asp-for="Cluster" value="@Model.Cluster" />
+
+
+        <label asp-for="Notes">Notes</label>
+        <input asp-for="Notes" value="@Model.Notes" />
+
+
+        <label asp-for="Shaft">Shaft</label>
+        <input asp-for="Shaft" value="@Model.Shaft" />
+
+
+        <label asp-for="SharedShaft">SharedShaft</label>
+        <input asp-for="SharedShaft" value="@Model.SharedShaft" />
+
+
+        <label asp-for="PreservationIndex2">PreservationIndex2</label>
+        <input asp-for="PreservationIndex2" value="@Model.PreservationIndex2" />
+
+
+        <label asp-for="BurialMaterials">BurialMaterials</label>
+        <input asp-for="BurialMaterials" value="@Model.BurialMaterials" />
+
+
+        <label asp-for="BurialGoods">BurialGoods</label>
+        <input asp-for="BurialGoods" value="@Model.BurialGoods" />
+
+
+        <label asp-for="Photo">Photo</label>
+        <input asp-for="Photo" value="@Model.Photo" />
+        
+
+        <button class="btn btn-primary" type="submit">Confirm</button>
+
     </form>
 
     <!--Show any errors here-->
