@@ -70,6 +70,20 @@ namespace INTEX2Mock.Controllers
             return View("UserRoles", userManager.Users.ToList());
         }
 
+        [Authorize(Policy = "writepolicy")]
+        [HttpPost]
+        public async Task<IActionResult> RemoveRole(string UserId, string newEmail, string Role, string NewRole)
+        {
+            var selectedRole = roleManager.FindByNameAsync(NewRole).Result;
+
+            var selectedUser = userManager.FindByIdAsync(UserId).Result;
+
+            await userManager.RemoveFromRoleAsync(selectedUser, Role);
+            
+            
+
+            return View("UserRoles", userManager.Users.ToList());
+        }
 
         [HttpPost]
         public async Task<IActionResult> CreateRole(IdentityRole role)
