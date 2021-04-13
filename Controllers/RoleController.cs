@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using INTEX2Mock.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
@@ -70,6 +71,52 @@ namespace INTEX2Mock.Controllers
             return View("UserRoles", userManager.Users.ToList());
         }
 
+        [Authorize(Policy = "writepolicy")]
+        [HttpPost]
+        public async Task<IActionResult> RemoveUser(string UserId)
+        {
+
+            var selectedUser = await userManager.FindByIdAsync(UserId);
+            var rolesForUser = await userManager.GetRolesAsync(selectedUser);
+
+            var logins = await userManager.GetLoginsAsync(selectedUser);
+
+            foreach(var x in logins)
+            {
+                var result = await userManager.RemoveLoginAsync(selectedUser, x.LoginProvider, x.ProviderKey);
+                //await userManager.RemoveLoginAsync(selectedUser, logins., logins.ProviderKey);
+                if(result != IdentityResult.Success)
+                {
+                    break;
+                }
+            }
+            
+            foreach(var x in rolesForUser)
+            {
+                var result2 = await userManager.RemoveFromRoleAsync(selectedUser, x);
+
+                if(result2 != IdentityResult.Success)
+                {
+                    break;
+                }
+            }
+
+
+            //await userManager.RemoveFromRoleAsync(selectedUser, Role);
+
+            await userManager.DeleteAsync(selectedUser);
+            
+            
+
+            return View("DeleteConfirmation");
+        }
+
+        [HttpPost]
+        public IActionResult ReviewDeleteUser(string UserId)
+        {
+
+            return View("ReviewDeleteUser" ,UserId);
+        }
 
         [HttpPost]
         public async Task<IActionResult> CreateRole(IdentityRole role)
