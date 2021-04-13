@@ -34,7 +34,7 @@
 
             <form method="post" asp-action="MummyRecordDetails">
                 <input type="hidden" asp-for="PrimaryKeyId" value="@Model.PrimaryKeyId" />
-                <button type="submit" class="btn btn-success" style="margin-bottom:3%">Details</button>
+                <button type="submit" class="btn btn-primary" style="margin-bottom:3%">Details</button>
             </form>
         }
         else if (User.IsInRole("Researcher"))
@@ -48,7 +48,7 @@
 
             <form method="post" asp-action="MummyRecordDetails">
                 <input type="hidden" asp-for="PrimaryKeyId" value="@Model.PrimaryKeyId" />
-                <button type="submit" class="btn btn-success" style="margin-bottom:3%">Details</button>
+                <button type="submit" class="btn btn-primary" style="margin-bottom:3%">Details</button>
             </form>
         }
 
@@ -56,8 +56,9 @@
         {
             <form method="post" asp-action="MummyRecordDetails">
                 <input type="hidden" asp-for="PrimaryKeyId" value="@Model.PrimaryKeyId" />
-                <button type="submit" class="btn btn-success" style="margin-bottom:3%">Details</button>
+                <button type="submit" class="btn btn-primary" style="margin-bottom:3%">Details</button>
             </form>
+
         }
 
     </td>
