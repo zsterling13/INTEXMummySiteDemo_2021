@@ -13,6 +13,7 @@ using INTEX2Mock.Data;
 using INTEX2Mock.Models.ViewModels;
 using INTEX2Mock.Models.Searching;
 using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 
 namespace INTEX2Mock.Controllers
 {
@@ -316,6 +317,25 @@ namespace INTEX2Mock.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        // GET: shows details for the quote
+        [HttpPost]
+        public async Task<IActionResult> MummyRecordDetails(MainTable mainTable)
+        {
+            if (mainTable == null)
+            {
+                return NotFound();
+            }
+
+            var mummy = await _mummyContext.MainTables
+                .FirstOrDefaultAsync(m => m.PrimaryKeyId == mainTable.PrimaryKeyId);
+            if (mummy == null)
+            {
+                return NotFound();
+            }
+
+            return View(mummy);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
