@@ -8,7 +8,7 @@
 <h1>@ViewData["Title"]</h1>
 <form method="get" id="filterForm" name="filterForm" class="mb-3">
     <h4 class="filter">Burial Information</h4>
-    <label asp-for="burialLocationNS">Burial Location (NS)</label>
+    <label asp-for="burialLocationNS">Burial Location (NS): </label>
     <select asp-for="burialLocationNS">
         <option></option>
         <option value="N">
@@ -19,7 +19,7 @@
         </option>
     </select>
 
-    <label>Burial Location (EW)</label>
+    <label>Burial Location (EW): </label>
     <select asp-for="burialLocationEW">
         <option></option>
         <option value="E">
@@ -37,7 +37,7 @@
         <option value=False>No</option>
     </select>
     <br />
-    <label asp-for="burialSituation">Burial Situation</label>
+    <label asp-for="burialSituation">Burial Situation: </label>
     <input type="text" asp-for="burialSituation" />
 
     <label asp-for="burialSubplot">Area: </label>
@@ -54,7 +54,7 @@
 
     <br />
     <h4 class="filter">Mummy Information</h4>
-    <label asp-for="gender">Gender/Sex</label>
+    <label asp-for="gender">Gender/Sex: </label>
     <select asp-for="gender">
         <option></option>
         <option value="M">
@@ -75,7 +75,7 @@
     </select>
 
 
-    <label asp-for="headDirection">Head Direction</label>
+    <label asp-for="headDirection">Head Direction: </label>
     <select asp-for="headDirection">
         <option></option>
         <option value="E">
@@ -102,7 +102,7 @@
         <option value="VI">VI</option>
     </select>
 
-    <label asp-for="hairColor">Hair Color</label>
+    <label asp-for="hairColor">Hair Color: </label>
     <input type="text" asp-for="hairColor" />
     <br />
     <label asp-for="yearFound">Year Of Excavation: </label>
@@ -149,7 +149,7 @@
         </option>
     </select>
 
-    <label asp-for="ageClassification">Age Classification</label>
+    <label asp-for="ageClassification">Age Classification: </label>
     <select asp-for="ageClassification">
         <option></option>
         <option value="A">Adult (15 years or older)</option>
