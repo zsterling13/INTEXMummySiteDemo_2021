@@ -181,7 +181,7 @@ namespace INTEX2Mock.Controllers
                     x.BurialDepth = passedMummy.BurialDepth;
                     x.FieldBook = passedMummy.FieldBook;
                     x.FieldBookPageNum = passedMummy.FieldBookPageNum;
-                    //    public string InitialOfDataExpert { get; set; }
+                    x.InitialOfDataExpert = passedMummy.InitialOfDataExpert;
                     //    public string InitialsChecker { get; set; }
                     //    public string BodyAnalyzeYear { get; set; }
                     //    public string SouthToHead { get; set; }
