@@ -4,7 +4,7 @@
 @{
 }
 
-@model Mummy;
+@model MainTable
 
 <div>
     <h1>Add a Mummy Record</h1>
@@ -15,13 +15,454 @@
     <!--Form where the user will enter in information to be run through the Add_Movie Action in the Home Controller-->
     <form method="post">
         <div>
-            <label asp-for="Name">Name</label>
-            <input asp-for="Name" />
+            <label asp-for="BurialId"></label>
+            <input asp-for="BurialId" />
         </div>
         <div>
-            <label asp-for="Age">Age</label>
-            <input asp-for="Age" />
+            <label asp-for="C14Id"></label>
+            <input asp-for="C14Id" />
         </div>
+        <div>
+            <label asp-for="SampleId"></label>
+            <input asp-for="SampleId" />
+        </div>
+        <div>
+            <label asp-for="BurialLocationNs"></label>
+            <input asp-for="BurialLocationNs" />
+        </div>
+        <div>
+            <label asp-for="BurialLocationEw"></label>
+            <input asp-for="BurialLocationEw" />
+        </div>
+        <div>
+            <label asp-for="LowPairNs"></label>
+            <input asp-for="LowPairNs" />
+        </div>
+        <div>
+            <label asp-for="HighPairNs"></label>
+            <input asp-for="HighPairNs" />
+        </div>
+        <div>
+            <label asp-for="LowPairEw"></label>
+            <input asp-for="LowPairEw" />
+        </div>
+        <div>
+            <label asp-for="HighPairEw"></label>
+            <input asp-for="HighPairEw" />
+        </div>
+        <div>
+            <label asp-for="BurialSubplot"></label>
+            <input asp-for="BurialSubplot" />
+        </div>
+        <div>
+            <label asp-for="BurialNumber"></label>
+            <input asp-for="BurialNumber" />
+        </div>
+        <div>
+            <label asp-for="BurialDepth"></label>
+            <input asp-for="BurialDepth" />
+        </div>
+        <div>
+            <label asp-for="FieldBook"></label>
+            <input asp-for="FieldBook" />
+        </div>
+        <div>
+            <label asp-for="FieldBookPageNum"></label>
+            <input asp-for="FieldBookPageNum" />
+        </div>
+        <div>
+            <label asp-for="InitialOfDataExpert"></label>
+            <input asp-for="InitialOfDataExpert" />
+        </div>
+        <div>
+            <label asp-for="InitialsChecker"></label>
+            <input asp-for="InitialsChecker" />
+        </div>
+        <div>
+            <label asp-for="BodyAnalyzeYear"></label>
+            <input asp-for="BodyAnalyzeYear" />
+        </div>
+        <div>
+            <label asp-for="SouthToHead"></label>
+            <input asp-for="SouthToHead" />
+        </div>
+        <div>
+            <label asp-for="SouthToFeet"></label>
+            <input asp-for="SouthToFeet" />
+        </div>
+        <div>
+            <label asp-for="EastToHead"></label>
+            <input asp-for="EastToHead" />
+        </div>
+        <div>
+            <label asp-for="EastToFeet"></label>
+            <input asp-for="EastToFeet" />
+        </div>
+        <div>
+            <label asp-for="WestToHead"></label>
+            <input asp-for="WestToHead" />
+        </div>
+        <div>
+            <label asp-for="WestToFeet"></label>
+            <input asp-for="WestToFeet" />
+        </div>
+        <div>
+            <label asp-for="BurialSituation"></label>
+            <input asp-for="BurialSituation" />
+        </div>
+        <div>
+            <label asp-for="LengthOfRemains"></label>
+            <input asp-for="LengthOfRemains" />
+        </div>
+        <div>
+            <label asp-for="SampleNumber"></label>
+            <input asp-for="SampleNumber" />
+        </div>
+        <div>
+            <label asp-for="GeFunctionTotal"></label>
+            <input asp-for="GeFunctionTotal" />
+        </div>
+        <div>
+            <label asp-for="GenderBodyCol"></label>
+            <input asp-for="GenderBodyCol" />
+        </div>
+        <div>
+            <label asp-for="HowGenderDetermined"></label>
+            <input asp-for="HowGenderDetermined" />
+        </div>
+        <div>
+            <label asp-for="BasilarSuture"></label>
+            <input asp-for="BasilarSuture" />
+        </div>
+        <div>
+            <label asp-for="VentralArc"></label>
+            <input asp-for="VentralArc" />
+        </div>
+        <div>
+            <label asp-for="SubpubicAngle"></label>
+            <input asp-for="SubpubicAngle" />
+        </div>
+        <div>
+            <label asp-for="SciaticNotch"></label>
+            <input asp-for="SciaticNotch" />
+        </div>
+        <div>
+            <label asp-for="PubicBone"></label>
+            <input asp-for="PubicBone" />
+        </div>
+        <div>
+            <label asp-for="PreaurSulcus"></label>
+            <input asp-for="PreaurSulcus" />
+        </div>
+        <div>
+            <label asp-for="MedialIpRamus"></label>
+            <input asp-for="MedialIpRamus" />
+        </div>
+        <div>
+            <label asp-for="DorsalPitting"></label>
+            <input asp-for="DorsalPitting" />
+        </div>
+        <div>
+            <label asp-for="ForemanMagnum"></label>
+            <input asp-for="ForemanMagnum" />
+        </div>
+        <div>
+            <label asp-for="FemurHead"></label>
+            <input asp-for="FemurHead" />
+        </div>
+        <div>
+            <label asp-for="HumerusHead"></label>
+            <input asp-for="HumerusHead" />
+        </div>
+        <div>
+            <label asp-for="Osteophytosis"></label>
+            <input asp-for="Osteophytosis" />
+        </div>
+        <div>
+            <label asp-for="PubicSymphysis"></label>
+            <input asp-for="PubicSymphysis" />
+        </div>
+        <div>
+            <label asp-for="BoneLength"></label>
+            <input asp-for="BoneLength" />
+        </div>
+        <div>
+            <label asp-for="MedialClavicle"></label>
+            <input asp-for="MedialClavicle" />
+        </div>
+        <div>
+            <label asp-for="IliacCrest"></label>
+            <input asp-for="IliacCrest" />
+        </div>
+        <div>
+            <label asp-for="FemurDiameter"></label>
+            <input asp-for="FemurDiameter" />
+        </div>
+        <div>
+            <label asp-for="Humerus"></label>
+            <input asp-for="Humerus" />
+        </div>
+        <div>
+            <label asp-for="FemurLength"></label>
+            <input asp-for="FemurLength" />
+        </div>
+        <div>
+            <label asp-for="HumerusLength"></label>
+            <input asp-for="HumerusLength" />
+        </div>
+        <div>
+            <label asp-for="TibiaLength"></label>
+            <input asp-for="TibiaLength" />
+        </div>
+        <div>
+            <label asp-for="Robust"></label>
+            <input asp-for="Robust" />
+        </div>
+        <div>
+            <label asp-for="SupraorbitalRidges"></label>
+            <input asp-for="SupraorbitalRidges" />
+        </div>
+        <div>
+            <label asp-for="OrbitEdge"></label>
+            <input asp-for="OrbitEdge" />
+        </div>
+        <div>
+            <label asp-for="ParietalBossing"></label>
+            <input asp-for="ParietalBossing" />
+        </div>
+        <div>
+            <label asp-for="Gonian"></label>
+            <input asp-for="Gonian" />
+        </div>
+        <div>
+            <label asp-for="NuchalCrest"></label>
+            <input asp-for="NuchalCrest" />
+        </div>
+        <div>
+            <label asp-for="ZygomaticCrest"></label>
+            <input asp-for="ZygomaticCrest" />
+        </div>
+        <div>
+            <label asp-for="CranialSuture"></label>
+            <input asp-for="CranialSuture" />
+        </div>
+        <div>
+            <label asp-for="MaximumCranialLength"></label>
+            <input asp-for="MaximumCranialLength" />
+        </div>
+        <div>
+            <label asp-for="MaximumCranialBreadth"></label>
+            <input asp-for="MaximumCranialBreadth" />
+        </div>
+        <div>
+            <label asp-for="BasionBregmaHeight"></label>
+            <input asp-for="BasionBregmaHeight" />
+        </div>
+        <div>
+            <label asp-for="BasionNasion"></label>
+            <input asp-for="BasionNasion" />
+        </div>
+        <div>
+            <label asp-for="BasionProsthionLength"></label>
+            <input asp-for="BasionProsthionLength" />
+        </div>
+        <div>
+            <label asp-for="BizygomaticDiameter"></label>
+            <input asp-for="BizygomaticDiameter" />
+        </div>
+        <div>
+            <label asp-for="NasionProsthion"></label>
+            <input asp-for="NasionProsthion" />
+        </div>
+        <div>
+            <label asp-for="MaximumNasalBreadth"></label>
+            <input asp-for="MaximumNasalBreadth" />
+        </div>
+        <div>
+            <label asp-for="InterorbitalBreadth"></label>
+            <input asp-for="InterorbitalBreadth" />
+        </div>
+        <div>
+            <label asp-for="ArtifactsDescription"></label>
+            <input asp-for="ArtifactsDescription" />
+        </div>
+        <div>
+            <label asp-for="HairColor"></label>
+            <input asp-for="HairColor" />
+        </div>
+        <div>
+            <label asp-for="PreservationIndex"></label>
+            <input asp-for="PreservationIndex" />
+        </div>
+        <div>
+            <label asp-for="HairTaken"></label>
+            <input asp-for="HairTaken" />
+        </div>
+        <div>
+            <label asp-for="SoftTissueTaken"></label>
+            <input asp-for="SoftTissueTaken" />
+        </div>
+        <div>
+            <label asp-for="BoneTaken"></label>
+            <input asp-for="BoneTaken" />
+        </div>
+        <div>
+            <label asp-for="ToothTaken"></label>
+            <input asp-for="ToothTaken" />
+        </div>
+        <div>
+            <label asp-for="TextileTaken"></label>
+            <input asp-for="TextileTaken" />
+        </div>
+        <div>
+            <label asp-for="DescriptionOfTaken"></label>
+            <input asp-for="DescriptionOfTaken" />
+        </div>
+        <div>
+            <label asp-for="ArtifactFound"></label>
+            <input asp-for="ArtifactFound" />
+        </div>
+        <div>
+            <label asp-for="AgeMethod"></label>
+            <input asp-for="AgeMethod" />
+        </div>
+        <div>
+            <label asp-for="EstimateAge"></label>
+            <input asp-for="EstimateAge" />
+        </div>
+        <div>
+            <label asp-for="AgeClassification"></label>
+            <input asp-for="AgeClassification" />
+        </div>
+        <div>
+            <label asp-for="EstimateLivingStature"></label>
+            <input asp-for="EstimateLivingStature" />
+        </div>
+        <div>
+            <label asp-for="ToothAttrition"></label>
+            <input asp-for="ToothAttrition" />
+        </div>
+        <div>
+            <label asp-for="ToothEruption"></label>
+            <input asp-for="ToothEruption" />
+        </div>
+        <div>
+            <label asp-for="PathologyAnomalies"></label>
+            <input asp-for="PathologyAnomalies" />
+        </div>
+        <div>
+            <label asp-for="EpiphysealUnion"></label>
+            <input asp-for="EpiphysealUnion" />
+        </div>
+        <div>
+            <label asp-for="YearFound"></label>
+            <input asp-for="YearFound" />
+        </div>
+        <div>
+            <label asp-for="MonthFound"></label>
+            <input asp-for="MonthFound" />
+        </div>
+        <div>
+            <label asp-for="DayFound"></label>
+            <input asp-for="DayFound" />
+        </div>
+        <div>
+            <label asp-for="HeadDirection"></label>
+            <input asp-for="HeadDirection" />
+        </div>
+        <div>
+            <label asp-for="Rack"></label>
+            <input asp-for="Rack" />
+        </div>
+        <div>
+            <label asp-for="CribraOrbitala"></label>
+            <input asp-for="CribraOrbitala" />
+        </div>
+        <div>
+            <label asp-for="PoroticHyperostosis"></label>
+            <input asp-for="PoroticHyperostosis" />
+        </div>
+        <div>
+            <label asp-for="PoroticHyperostosisLocations"></label>
+            <input asp-for="PoroticHyperostosisLocations" />
+        </div>
+        <div>
+            <label asp-for="MetopicSuture"></label>
+            <input asp-for="MetopicSuture" />
+        </div>
+        <div>
+            <label asp-for="ButtonOsteoma"></label>
+            <input asp-for="ButtonOsteoma" />
+        </div>
+        <div>
+            <label asp-for="PostcraniaTrauma"></label>
+            <input asp-for="PostcraniaTrauma" />
+        </div>
+        <div>
+            <label asp-for="OsteologyUnknownComment"></label>
+            <input asp-for="OsteologyUnknownComment" />
+        </div>
+        <div>
+            <label asp-for="TemporalMandibularJointOsteoarthritisTmjOa"></label>
+            <input asp-for="TemporalMandibularJointOsteoarthritisTmjOa" />
+        </div>
+        <div>
+            <label asp-for="LinearHypoplasiaEnamel"></label>
+            <input asp-for="LinearHypoplasiaEnamel" />
+        </div>
+        <div>
+            <label asp-for="AreaHillBurials"></label>
+            <input asp-for="AreaHillBurials" />
+        </div>
+        <div>
+            <label asp-for="Tomb"></label>
+            <input asp-for="Tomb" />
+        </div>
+        <div>
+            <label asp-for="YearOnSkull"></label>
+            <input asp-for="YearOnSkull" />
+        </div>
+        <div>
+            <label asp-for="MonthOnSkull"></label>
+            <input asp-for="MonthOnSkull" />
+        </div>
+        <div>
+            <label asp-for="DateOnSkull"></label>
+            <input asp-for="DateOnSkull" />
+        </div>
+        <div>
+            <label asp-for="Cluster"></label>
+            <input asp-for="Cluster" />
+        </div>
+        <div>
+            <label asp-for="Notes"></label>
+            <input asp-for="Notes" />
+        </div>
+        <div>
+            <label asp-for="Shaft"></label>
+            <input asp-for="Shaft" />
+        </div>
+        <div>
+            <label asp-for="SharedShaft"></label>
+            <input asp-for="SharedShaft" />
+        </div>
+        <div>
+            <label asp-for="PreservationIndex2"></label>
+            <input asp-for="PreservationIndex2" />
+        </div>
+        <div>
+            <label asp-for="BurialMaterials"></label>
+            <input asp-for="BurialMaterials" />
+        </div>
+        <div>
+            <label asp-for="BurialGoods"></label>
+            <input asp-for="BurialGoods" />
+        </div>
+        <div>
+            <label asp-for="Photo"></label>
+            <input asp-for="Photo" />
+        </div>
+    
 
         <button class="btn btn-primary" type="submit">Confirm</button>
     </form>
