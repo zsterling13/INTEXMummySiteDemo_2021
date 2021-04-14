@@ -4,7 +4,7 @@
 @{
 }
 @model MainTable
-<!--Dynamically input appropriate values from each possible time slots by reference to the database-->
+<!--Dynamically input appropriate values from each mummy record by reference to the database-->
 <tr id="highlight">
     <td>@Model.PrimaryKeyId</td>
     <td>@Model.BurialLocationNs</td>
@@ -16,6 +16,7 @@
     <td>@Model.HairColor</td>
     <td>@Model.YearFound</td>
     <td>
+        @* Again - determines what is seen depending on the roles *@
         @if (User.IsInRole("Admin"))
         {
             <form method="get" asp-action="EditMummyRecord">

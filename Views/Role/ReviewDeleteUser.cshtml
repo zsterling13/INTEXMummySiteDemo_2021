@@ -5,6 +5,7 @@
 }
 @model string
 
+@* Confirmation before account is delete, just to make sure you don't goof *@
  <h3>Are you sure you want to remove User: @Model.ToString() ?</h3>
 
  <form method="post" asp-action="RemoveUser">

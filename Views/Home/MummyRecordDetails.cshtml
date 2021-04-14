@@ -6,7 +6,8 @@
 @model INTEX2Mock.Models.MainTable
 
 <h1>Details</h1>
-
+@* This holds all of the details for each mummy. The names of each data attribute is displayed with each information that has been entered regarding 
+    that particular excavation. *@
 <div>
     <h4>Mummy Information</h4>
     <hr />
@@ -701,7 +702,7 @@
 <div>
     <a class="btn btn-primary" asp-action="ViewMummyRecords">Back to List</a>
 </div>
-
+@* If the roles are different, they will show different aspects to let the admin delete and edit and the researcher to edit *@
 <div>
     @if (User.IsInRole("Admin"))
     {

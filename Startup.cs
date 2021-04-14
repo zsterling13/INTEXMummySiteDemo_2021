@@ -28,17 +28,24 @@ namespace INTEX2Mock
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string mummyDBConnect = Environment.GetEnvironmentVariable("db_connect_mum");
+            string AuthDBConnect = Environment.GetEnvironmentVariable("db_connect_auth");
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-          
+                    Configuration.GetConnectionString("DefaultConnection") + AuthDBConnect));
+
             services.AddDbContext<PWOIKMContext>(options =>
             options.UseSqlServer(
-                    Configuration.GetConnectionString("FinalMummyConnection")));
+                    Configuration.GetConnectionString("FinalMummyConnection") + mummyDBConnect));
+
+
             services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                  .AddDefaultUI()
                  .AddEntityFrameworkStores<ApplicationDbContext>()
                  .AddDefaultTokenProviders();
+
+            
 
 
             services.AddControllersWithViews();
