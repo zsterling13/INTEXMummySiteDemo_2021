@@ -23,14 +23,15 @@ namespace INTEX2Mock.Controllers
 
         RoleManager<IdentityRole> _roleManager;
 
+        //Initialize a few contexts and variables to be used throughout the home controller
         private PWOIKMContext _mummyContext { get; set; }
-
         public MainTable mainTableItem;
-
         public MummySearchLogic _mummySearchLogic { get; set; }
 
+        //Initialize page size
         private int pageSize = 75;
 
+        //Constructor for the Home Controller
         public HomeController(ILogger<HomeController> logger, RoleManager<IdentityRole> roleManager, PWOIKMContext mummyContext)
         {
             _logger = logger;
@@ -38,20 +39,22 @@ namespace INTEX2Mock.Controllers
             _mummyContext = mummyContext;
         }
 
-        //[Authorize(Policy = "readpolicy")]
+        //Returns the homepage
         public IActionResult Index()
         {
             return View();
         }
 
+        //Get method to easily show all mummy records in an enumerated table
         public IActionResult ViewMummyRecords(MummySearchModel? searchModel, int pageNum = 1)
         {
+            //initialize a few variables to be used in the later business logic
             var mummyLogic = new MummySearchLogic(_mummyContext);
             int nullProps = 0;
 
+            //Logic to determine whether there are any filters being used
             Type type = typeof(MummySearchModel);
             PropertyInfo[] propertyInfo = searchModel.GetType().GetProperties();
-
             PropertyInfo[] properties = type.GetProperties();
             foreach (PropertyInfo property in properties)
             {
@@ -68,10 +71,13 @@ namespace INTEX2Mock.Controllers
                 emptyFilter = true;
             }
 
+            //If statement to determine whether to try to filter or not
             if (emptyFilter == false)
             {
+                //Create a modified query based on the search model that is filled in by the filters on the page
                 var queryModel = mummyLogic.GetMummies(searchModel);
-
+                
+                //return the view with the necessary queried list and other necessary models
                 return View(new SeeMummiesViewModel
                 {
                     Mummies = (queryModel
@@ -95,7 +101,8 @@ namespace INTEX2Mock.Controllers
             }
             else
             {
-
+                //If there are no filters being used then return an unfiltered list of all possible records
+                //along with other necessary models
                 return View(new SeeMummiesViewModel
                 {
                     Mummies = (_mummyContext.MainTables
@@ -117,24 +124,31 @@ namespace INTEX2Mock.Controllers
             }
         }
 
+        //Post action that passes in the necessary info into an edit form for the specified record
         [HttpPost]
         public IActionResult ViewMummyRecords(MainTable passedMummy)
         {
             return View("EditMummyRecord", passedMummy);
         }
+
+        //Action that takes a user to an empty form for adding a record
+        [Authorize(Policy = "writepolicy")]
         [HttpGet]
         public IActionResult AddMummyRecord()
         {
             return View();
         }
 
+        //Action to submit a new record
+        [Authorize(Policy = "writepolicy")]
         [HttpPost]
         public IActionResult AddMummyRecord(MainTable newRecord)
         {
+            //Logic to ensure that the submitted record is assigned the largest primarykeyId
             var wumbo = _mummyContext.MainTables.OrderByDescending(x => x.PrimaryKeyId).FirstOrDefault();
-
             newRecord.PrimaryKeyId = wumbo.PrimaryKeyId + 1;
 
+            //Submit the info for the database to store
             if (ModelState.IsValid == true)
             {
                 //Communicates with the sqlite database through the private context object to modify data in the database
@@ -143,6 +157,8 @@ namespace INTEX2Mock.Controllers
 
                 return View("Confirmation", newRecord);
             }
+
+            //If there are missing fields or incorrect fields then reload the page with errors for the user to see
             else
             {
                 //Reload the page in a way that allows mistyped info to be called-out
@@ -150,6 +166,8 @@ namespace INTEX2Mock.Controllers
             }
         }
 
+        //Initial action that populates info for the selected mummy record in the edit form
+        [Authorize(Policy = "writepolicy")]
         [HttpGet]
         public IActionResult EditMummyRecord(MainTable recordInfo)
         {
@@ -164,6 +182,8 @@ namespace INTEX2Mock.Controllers
             return View(passedInInfo);
         }
 
+        //Action that submits changes in the edit form for the database to process
+        [Authorize(Policy = "writepolicy")]
         [HttpPost]
         public IActionResult EditMummyRecordPost(MainTable passedMummy)
         {
@@ -285,6 +305,7 @@ namespace INTEX2Mock.Controllers
                         x.BurialMaterials = passedMummy.BurialMaterials;
                         x.BurialGoods = passedMummy.BurialGoods;
                         x.Photo = passedMummy.Photo;
+                        x.BurialId = passedMummy.BurialId;
                     }
 
                     _mummyContext.SaveChanges();
@@ -292,20 +313,28 @@ namespace INTEX2Mock.Controllers
                     //Then return a customized confirmation page that confirms that the record has been modified/edited
                     return View("Confirmation", passedMummy);
             }
+
+            //If there are missing fields or incorrect fields then reload the page with errors for the user to see
             else
             {
                 return View(passedMummy);
             }
         }
 
+        //Action that redirects the user to a page for them to confirm that they want to delete the specified record
+        [Authorize(Policy = "managepolicy")]
         public IActionResult DeleteMummyRecord(MainTable passedMummy)
             {
                 return View(passedMummy);
             }
 
+        //Action that works with the database to eliminate the specified record
+        [Authorize(Policy = "managepolicy")]
         [HttpPost]
         public IActionResult EliminateRecord(MainTable passedMummy)
         {
+
+            //Find the right record to delete
             IQueryable<MainTable> removingRecord = _mummyContext.MainTables.Where(p => p.PrimaryKeyId == passedMummy.PrimaryKeyId);
 
             //loop to remove the record in the database
@@ -314,17 +343,14 @@ namespace INTEX2Mock.Controllers
                 _mummyContext.MainTables.Remove(x);
             }
 
+            //Submit changes for the database to process
             _mummyContext.SaveChanges();
 
+            //Redirect to the confirmation page for the user to know that everything was successful
             return View("Confirmation", passedMummy);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        // GET: shows details for the quote
+        //Action that allows for a user to view all of the details for the specified record
         [HttpPost]
         public async Task<IActionResult> MummyRecordDetails(MainTable mainTable)
         {
@@ -333,6 +359,7 @@ namespace INTEX2Mock.Controllers
                 return NotFound();
             }
 
+            //Queried object that is equal to the selected record
             var mummy = await _mummyContext.MainTables
                 .FirstOrDefaultAsync(m => m.PrimaryKeyId == mainTable.PrimaryKeyId);
             if (mummy == null)

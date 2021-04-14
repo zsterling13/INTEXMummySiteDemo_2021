@@ -63,6 +63,8 @@ namespace INTEX2Mock
                     builder => builder.RequireRole("Admin", "Researcher", "Unassigned"));
                 options.AddPolicy("writepolicy",
                     builder => builder.RequireRole("Admin", "Researcher"));
+                options.AddPolicy("managepolicy",
+                    builder => builder.RequireRole("Admin"));
             });
             
         }
