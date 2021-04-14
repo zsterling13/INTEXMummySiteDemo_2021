@@ -9,7 +9,7 @@ namespace INTEX2Mock.Models
     public partial class MainTable
     {
         [Key]
-        public int PrimaryKeyId { get; set; }
+        public int? PrimaryKeyId { get; set; }
         public string BurialId { get; set; }
         public int? C14Id { get; set; }
         public int? SampleId { get; set; }

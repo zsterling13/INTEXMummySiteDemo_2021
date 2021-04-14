@@ -14,6 +14,7 @@
 
     <!--Form where the user will enter in information to be run through the Add_Movie Action in the Home Controller-->
     <form method="post">
+        <input asp-for="PrimaryKeyId" type="hidden" />
         <div>
             <label asp-for="BurialId"></label>
             <input asp-for="BurialId" />

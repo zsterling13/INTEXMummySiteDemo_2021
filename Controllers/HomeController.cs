@@ -131,6 +131,10 @@ namespace INTEX2Mock.Controllers
         [HttpPost]
         public IActionResult AddMummyRecord(MainTable newRecord)
         {
+            var wumbo = _mummyContext.MainTables.OrderByDescending(x => x.PrimaryKeyId).FirstOrDefault();
+
+            newRecord.PrimaryKeyId = wumbo.PrimaryKeyId + 1;
+
             if (ModelState.IsValid == true)
             {
                 //Communicates with the sqlite database through the private context object to modify data in the database
