@@ -28,6 +28,7 @@ namespace INTEX2Mock
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Grab environment variables from AWS Elastic Beanstalk on how to login to the databases
             string mummyDBConnect = Environment.GetEnvironmentVariable("db_connect_mum");
             string AuthDBConnect = Environment.GetEnvironmentVariable("db_connect_auth");
 
@@ -39,18 +40,15 @@ namespace INTEX2Mock
             options.UseSqlServer(
                     Configuration.GetConnectionString("FinalMummyConnection") + mummyDBConnect));
 
-
             services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                  .AddDefaultUI()
                  .AddEntityFrameworkStores<ApplicationDbContext>()
                  .AddDefaultTokenProviders();
 
-            
-
-
             services.AddControllersWithViews();
             services.AddRazorPages();
 
+            //Additional authorization policies to group users together on who can access what
             services.AddAuthorization(options => {
                 options.AddPolicy("readpolicy",
                     builder => builder.RequireRole("Admin", "Researcher", "Unassigned"));
@@ -86,6 +84,7 @@ namespace INTEX2Mock
 
             app.UseEndpoints(endpoints =>
             {
+                //Additional endpoint to make changing the page number in filtering easy
                 endpoints.MapControllerRoute(
                     "pagenum",
                     "ViewMummyRecords/{pagenum}",
