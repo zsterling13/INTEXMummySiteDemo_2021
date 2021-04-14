@@ -5,7 +5,7 @@
 }
 
 <h1>@ViewData["Title"]</h1>
-@{
+@*@{
     if (@Model.DisplayConfirmAccountLink)
     {
 <p>
@@ -19,4 +19,5 @@
         Please check your email to confirm your account.
 </p>
     }
-}
+}*@
+<p>Click <a id="confirm-link" href="@Model.EmailConfirmationUrl">here</a> to confirm your account creation.</p>
