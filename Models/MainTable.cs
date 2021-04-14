@@ -8,6 +8,7 @@ namespace INTEX2Mock.Models
 {
     public partial class MainTable
     {
+        //model for main table with all of the variables.
         [Key]
         public int? PrimaryKeyId { get; set; }
         public string BurialId { get; set; }

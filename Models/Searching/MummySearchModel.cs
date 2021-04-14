@@ -7,10 +7,7 @@ namespace INTEX2Mock.Models.Searching
 {
     public class MummySearchModel
     {
-        /*public int? MummyID { get; set; }
-        public string Name { get; set; }
-        public int? AgeFrom { get; set; }
-        public int? AgeTo { get; set; }*/
+        //model for searching and filtering through the database
 
         public string burialLocationNS { get; set; }
         public string burialLocationEW { get; set; }

@@ -8,6 +8,8 @@ namespace INTEX2Mock.Models
 {
     public class Mummy
     {
+
+        //model for mummy *OLD VERSION*
         [Key, Required]
         public int MummyID { get; set; }
 

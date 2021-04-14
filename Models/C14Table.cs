@@ -8,6 +8,7 @@ namespace INTEX2Mock.Models
 {
     public partial class C14Table
     {
+        //model for C14 table
         [Key]
         public string Id { get; set; }
         public string BurialLocation { get; set; }
