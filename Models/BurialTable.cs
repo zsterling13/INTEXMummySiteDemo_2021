@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace INTEX2Mock.Models
 {
+    //model for the burial table
     public partial class BurialTable
     {
         [Key]

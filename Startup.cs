@@ -34,13 +34,6 @@ namespace INTEX2Mock
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection") + AuthDBConnect));
-            //services.AddDbContext<MummyDbContext>(options =>
-            //options.UseSqlServer(
-            //        Configuration.GetConnectionString("MummyConnection")));
-            //services.AddDbContext<PWOIKMContext>(options =>
-            //options.UseSqlServer(
-            //        Configuration.GetConnectionString("FinalMummyConnection")));
-
 
             services.AddDbContext<PWOIKMContext>(options =>
             options.UseSqlServer(
