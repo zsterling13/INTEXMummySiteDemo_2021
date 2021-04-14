@@ -6,6 +6,8 @@
 
 @model MainTable
 
+@* Confirmation to delete record. *@
+
 <h1>Are you sure you want to delete record @Model.PrimaryKeyId ?</h1>
 
 <form method="post" asp-action="EliminateRecord">

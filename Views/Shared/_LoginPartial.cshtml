@@ -2,6 +2,7 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
+@* If the role is set to user, then it will show these things at the top, it not, then show the other things.  *@
 <ul class="navbar-nav text-uppercase ml-auto">
 @if (SignInManager.IsSignedIn(User))
 {

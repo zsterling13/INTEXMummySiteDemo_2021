@@ -5,7 +5,10 @@
     ViewData["Title"] = "Mummy Record List";
 }
 @model INTEX2Mock.Models.Searching.MummySearchModel
+@* Search Form *@
 <h1>@ViewData["Title"]</h1>
+@* Emabling everything to be filtered, mostly by type searching *@
+@* Some are drop downs so that they will be easier to filter.  *@
 <form method="get" id="filterForm" name="filterForm" class="mb-3">
     <h4 class="filter">Burial Information</h4>
     <label asp-for="burialLocationNS">Burial Location (NS): </label>
