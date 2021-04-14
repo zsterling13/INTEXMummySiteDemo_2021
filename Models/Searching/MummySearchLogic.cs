@@ -8,16 +8,20 @@ namespace INTEX2Mock.Models.Searching
 {
     public class MummySearchLogic
     {
+        //Intialize the database context to be used throughout the model
         private PWOIKMContext _mummyContext { get; set; }
 
+        //Constructor sets up the database context
         public MummySearchLogic(PWOIKMContext mummyContext)
         {
             _mummyContext = mummyContext;
         }
 
+        //Main method that takes in the search model and a single query over and over again appropriately based on
+        //the received search model
         public IQueryable<MainTable> GetMummies(MummySearchModel searchModel)
         {
-
+            //Create the initial unfiltered query to be filtered down
             var result = _mummyContext.MainTables.AsQueryable();
             if (searchModel != null)
             {
@@ -25,18 +29,22 @@ namespace INTEX2Mock.Models.Searching
                 {
                     result = result.Where(x => x.BurialLocationNs.Contains(searchModel.burialLocationNS));
                 }
+
                 if (!string.IsNullOrEmpty(searchModel.burialLocationEW))
                 {
                     result = result.Where(x => x.BurialLocationEw.Contains(searchModel.burialLocationEW));
                 }
+
                 if (!string.IsNullOrEmpty(searchModel.yearFound))
                 {
                     result = result.Where(x => x.YearFound.Contains(searchModel.yearFound));
                 }
+
                 if (searchModel.artifacts.HasValue)
                 {
                     result = result.Where(x => x.ArtifactFound == searchModel.artifacts);
                 }
+
                 if (!string.IsNullOrEmpty(searchModel.gender))
                 {
                     if (searchModel.gender == "F")
@@ -53,18 +61,22 @@ namespace INTEX2Mock.Models.Searching
                     }
                     
                 }
+
                 if (!string.IsNullOrEmpty(searchModel.burialSituation))
                 {
                     result = result.Where(x => x.BurialSituation.Contains(searchModel.burialSituation));
                 }
+
                 if (!string.IsNullOrEmpty(searchModel.hairColor))
                 {
                     result = result.Where(x => x.HairColor.Contains(searchModel.hairColor));
                 }
+
                 if (!string.IsNullOrEmpty(searchModel.headDirection))
                 {
                     result = result.Where(x => x.HeadDirection.Contains(searchModel.headDirection));
                 }
+
                 if (!string.IsNullOrEmpty(searchModel.ageClassification))
                 {
                     if (searchModel.ageClassification == "NI")
@@ -77,14 +89,17 @@ namespace INTEX2Mock.Models.Searching
                     }
                     
                 }
+
                 if (!string.IsNullOrEmpty(searchModel.burialSubplot))
                 {
                     result = result.Where(x => x.BurialSubplot.Contains(searchModel.burialSubplot));
                 }
+
                 if (!string.IsNullOrEmpty(searchModel.burialNumber))
                 {
                     result = result.Where(x => x.BurialNumber == searchModel.burialNumber);
                 }
+
                 if (!string.IsNullOrEmpty(searchModel.headDirection))
                 {
                     if (searchModel.headDirection == "E")
@@ -101,6 +116,7 @@ namespace INTEX2Mock.Models.Searching
                     }
 
                 }
+
                 if (!string.IsNullOrEmpty(searchModel.preservationIndex))
                 {
                     if (searchModel.preservationIndex == "II")
@@ -131,6 +147,7 @@ namespace INTEX2Mock.Models.Searching
                 }
             }
 
+            //Return the resulting query for the controller to pass on to the view
             return result;
         }
     }

@@ -24,6 +24,4 @@ namespace INTEX2Mock.Models.Searching
         public string preservationIndex { get; set; }
     }
 
-    
-
 }
