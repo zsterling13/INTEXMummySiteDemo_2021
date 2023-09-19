@@ -4,6 +4,3 @@ This project is designed to build a prototype website for the BYU Archeological 
 
 ## Layout
 The application uses the ASP.NET framework for building and running the website.
-
-## Launch
-To launch the application, download the repository, install Visual Studio, and click the launch button.
